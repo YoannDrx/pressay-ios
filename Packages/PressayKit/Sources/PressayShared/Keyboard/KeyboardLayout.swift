@@ -47,6 +47,7 @@ public struct KeyboardPreferences: @unchecked Sendable {
     }
 
     private static let layoutKey = "keyboard.layout"
+    private static let hapticsKey = "keyboard.haptics"
 
     public var layout: KeyboardLayoutSetting {
         get {
@@ -54,6 +55,17 @@ public struct KeyboardPreferences: @unchecked Sendable {
         }
         nonmutating set {
             defaults?.set(newValue.rawValue, forKey: Self.layoutKey)
+        }
+    }
+
+    /// A light tap under the finger for each key, on by default. iOS gives keyboards haptics
+    /// only with Full Access, which is also when this value can be read.
+    public var haptics: Bool {
+        get {
+            defaults?.object(forKey: Self.hapticsKey) as? Bool ?? true
+        }
+        nonmutating set {
+            defaults?.set(newValue, forKey: Self.hapticsKey)
         }
     }
 }

@@ -1,10 +1,13 @@
 import Foundation
+import notify
 
 /// Signal names shared by the app and its extensions.
 public enum PressaySignal {
     public static let phaseChanged = "fr.yodev.pressay.phase"
     public static let resultReady = "fr.yodev.pressay.result"
     public static let keyboardRequestsToggle = "fr.yodev.pressay.keyboard-toggle"
+    /// A `SetupMarks` date changed: the setup guide re-reads them.
+    public static let setupChanged = "fr.yodev.pressay.setup"
 }
 
 /// Cross-process signals between the app and its extensions. Darwin notifications carry
@@ -30,18 +33,15 @@ public enum DarwinNotifier {
         handlers[name, default: []].append(handler)
         lock.unlock()
         guard isFirst else { return }
-        CFNotificationCenterAddObserver(
-            CFNotificationCenterGetDarwinNotifyCenter(),
-            nil,
-            { _, _, cfName, _, _ in
-                guard let raw = cfName?.rawValue as String? else { return }
-                DarwinNotifier.dispatch(raw)
-            },
-            name as CFString,
-            nil,
-            .deliverImmediately
-        )
+        // On a dispatch queue rather than the main run loop, so a busy main thread does not
+        // hold back a signal; the handlers hop to the main actor themselves.
+        var token: Int32 = 0
+        notify_register_dispatch(name, &token, queue) { _ in
+            DarwinNotifier.dispatch(name)
+        }
     }
+
+    private static let queue = DispatchQueue(label: "fr.yodev.pressay.darwin-notifications")
 
     private static func dispatch(_ name: String) {
         lock.lock()
