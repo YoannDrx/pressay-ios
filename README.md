@@ -38,6 +38,29 @@ The Fast model (483 MB) is downloaded on demand from a pinned Hugging Face commi
 file is checked against the size and SHA-256 in `ModelManifest.parakeetTDTv3`, compiled into
 the app, before it is used. Downloads resume with HTTP Range.
 
+## The keyboard
+
+`Keyboard/` is UIKit, not SwiftUI: one view per key and a single touch handler give
+multi-finger rollover, taps between keys and the accents popup without loading SwiftUI in a
+process iOS caps in memory. Typing rules live in `PressayShared/Keyboard` and are unit tested:
+AZERTY (French) or QWERTY (English) from the app's layout setting or the system language,
+automatic capitals, caps lock on a double tap, double space for a full stop, held delete
+(character, then word), no autocorrection (decision D10). `ContextTracker` works around hosts
+that report the text before the cursor one edit late.
+
+`DictationLink` follows `SessionStore`, inserts results from `ResultQueue` (only the visible
+instance, one Darwin observer per process, results younger than 2 minutes) and offers "Undo
+insertion" while the cursor still follows the text. The microphone button writes a request
+time and posts `PressaySignal.keyboardRequestsToggle`; the app acts only on a request younger
+than 2 seconds. The keyboard never opens the app (App Review 4.4.1): when nothing answers
+(the app is not running, or iOS suspended it), the bar suggests the Action button. Without
+Full Access, typing works and the bar explains how to allow it. The keyboard logs a memory
+sample (`keyboard.memory`, numbers only) every 15 s while visible.
+
+To try it in the simulator: Settings > General > Keyboard > Keyboards > Add New Keyboard >
+Pressay, then Allow Full Access. After reinstalling the app, quit the host app (Messages)
+so it loads the new keyboard.
+
 ## Develop
 
 Requirements: Xcode 26, [XcodeGen](https://github.com/yonaskolb/XcodeGen) and

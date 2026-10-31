@@ -135,17 +135,133 @@
     "en": "Dictate with Pressay",
     "fr": "Dicter avec Pressay"
   },
-  "keyboard.fullAccessMissing": {
-    "en": "Turn on Full Access in Settings to dictate with Pressay.",
-    "fr": "Activez l’accès complet dans Réglages pour dicter avec Pressay."
+  "keyboard.bar.actionButtonHint": {
+    "en": "Press the Action button to dictate.",
+    "fr": "Appuyez sur le bouton Action pour dicter."
+  },
+  "keyboard.bar.failed": {
+    "en": "No text this time. Details in the Pressay app.",
+    "fr": "Aucun texte cette fois. Détails dans l’app Pressay."
+  },
+  "keyboard.bar.fullAccess": {
+    "en": "To dictate, go to Settings > General > Keyboard > Keyboards > Pressay and turn on Allow Full Access.",
+    "fr": "Pour dicter, ouvrez Réglages > Général > Clavier > Claviers > Pressay et activez Autoriser l’accès complet."
+  },
+  "keyboard.bar.inserted": {
+    "en": "Text inserted",
+    "fr": "Texte inséré"
+  },
+  "keyboard.bar.listening": {
+    "en": "Listening…",
+    "fr": "J’écoute…"
+  },
+  "keyboard.bar.ready": {
+    "en": "Ready to dictate",
+    "fr": "Prêt à dicter"
+  },
+  "keyboard.bar.transcribing": {
+    "en": "Transcribing…",
+    "fr": "Transcription…"
+  },
+  "keyboard.key.delete": {
+    "en": "Delete",
+    "fr": "Supprimer"
+  },
+  "keyboard.key.letters": {
+    "en": "Letters",
+    "fr": "Lettres"
+  },
+  "keyboard.key.numbers": {
+    "en": "Numbers",
+    "fr": "Chiffres"
+  },
+  "keyboard.key.shift": {
+    "en": "Shift",
+    "fr": "Majuscule"
+  },
+  "keyboard.key.shift.locked": {
+    "en": "Caps lock",
+    "fr": "Verrouillée"
+  },
+  "keyboard.key.shift.on": {
+    "en": "On",
+    "fr": "Activée"
+  },
+  "keyboard.key.space": {
+    "en": "space",
+    "fr": "espace"
+  },
+  "keyboard.key.symbols": {
+    "en": "Symbols",
+    "fr": "Symboles"
+  },
+  "keyboard.microphone.start": {
+    "en": "Dictate",
+    "fr": "Dicter"
+  },
+  "keyboard.microphone.stop": {
+    "en": "Stop dictating",
+    "fr": "Arrêter la dictée"
   },
   "keyboard.nextKeyboard": {
     "en": "Next keyboard",
     "fr": "Clavier suivant"
   },
-  "keyboard.ready": {
-    "en": "Pressay keyboard ready",
-    "fr": "Clavier Pressay prêt"
+  "keyboard.return.continue": {
+    "en": "continue",
+    "fr": "continuer"
+  },
+  "keyboard.return.default": {
+    "en": "return",
+    "fr": "retour"
+  },
+  "keyboard.return.done": {
+    "en": "done",
+    "fr": "OK"
+  },
+  "keyboard.return.emergencyCall": {
+    "en": "Emergency",
+    "fr": "Urgence"
+  },
+  "keyboard.return.go": {
+    "en": "go",
+    "fr": "aller"
+  },
+  "keyboard.return.join": {
+    "en": "join",
+    "fr": "rejoindre"
+  },
+  "keyboard.return.next": {
+    "en": "next",
+    "fr": "suivant"
+  },
+  "keyboard.return.route": {
+    "en": "route",
+    "fr": "itinéraire"
+  },
+  "keyboard.return.search": {
+    "en": "search",
+    "fr": "rechercher"
+  },
+  "keyboard.return.send": {
+    "en": "send",
+    "fr": "envoyer"
+  },
+  "keyboard.undo": {
+    "en": "Undo insertion",
+    "fr": "Annuler l’insertion"
+  },
+  "keyboardLayout.automatic": {
+    "en": "Automatic",
+    "fr": "Automatique"
+  },
+  "keyboardLayout.azerty": {
+    "en": "AZERTY (French)",
+    "fr": "AZERTY (français)"
+  },
+  "keyboardLayout.qwerty": {
+    "en": "QWERTY (English)",
+    "fr": "QWERTY (anglais)"
   },
   "language.en": {
     "en": "English",
@@ -206,6 +322,10 @@
   "settings.engine": {
     "en": "Engine",
     "fr": "Moteur"
+  },
+  "settings.keyboardLayout": {
+    "en": "Keyboard layout",
+    "fr": "Disposition du clavier"
   },
   "settings.language": {
     "en": "Language",
