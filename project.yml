@@ -11,7 +11,6 @@ settings:
     CODE_SIGN_STYLE: Automatic
     SWIFT_VERSION: "6.0"
     SWIFT_STRICT_CONCURRENCY: complete
-    TARGETED_DEVICE_FAMILY: "1"
     # The app and its extensions must ship the same version; CI overrides the build number.
     MARKETING_VERSION: "1.0.0"
     CURRENT_PROJECT_VERSION: "1"
@@ -44,6 +43,9 @@ targets:
         # Same bundle as the Mac App Store app, for universal purchase (decision D4).
         PRODUCT_BUNDLE_IDENTIFIER: fr.yodev.pressay
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        # iPhone only. XcodeGen defaults each iOS target to iPhone + iPad, which
+        # overrides a project-level value, so every target sets it.
+        TARGETED_DEVICE_FAMILY: "1"
     info:
       path: App/Info.plist
       properties:
@@ -72,6 +74,7 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: fr.yodev.pressay.widgets
+        TARGETED_DEVICE_FAMILY: "1"
     info:
       path: Widgets/Info.plist
       properties:
@@ -98,6 +101,7 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: fr.yodev.pressay.keyboard
+        TARGETED_DEVICE_FAMILY: "1"
     info:
       path: Keyboard/Info.plist
       properties:
