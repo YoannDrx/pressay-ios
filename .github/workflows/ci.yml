@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v7
+      # Reused strings come from the desktop app: check the catalog still matches them.
+      - uses: actions/checkout@v7
+        with:
+          repository: YoannDrx/pressay
+          path: desktop
+          sparse-checkout: src/i18n/locales
+      - name: Install tools
+        run: brew install xcodegen swiftlint
+      - name: Lint
+        run: swiftlint lint --strict
+      - name: Check translations
+        run: PRESSAY_DESKTOP_DIR=desktop scripts/build-string-catalog.py --check
+      - name: Test PressayKit
+        run: swift test --package-path Packages/PressayKit
+      - name: Build for the simulator
+        run: |
+          xcodegen generate
+          xcodebuild build \
+            -project Pressay.xcodeproj \
+            -scheme Pressay \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO \
+            -quiet

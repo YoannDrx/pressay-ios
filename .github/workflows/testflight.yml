@@ -1,0 +1,57 @@
+name: TestFlight
+
+# Pushing a tag such as v1.0.0-beta.1 archives the app and uploads it to App Store Connect.
+# Signing is cloud-managed through an App Store Connect API key with the Admin role,
+# stored as ASC_KEY_ID, ASC_ISSUER_ID and ASC_KEY_P8 (the .p8 file's content).
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  upload:
+    runs-on: macos-26
+    environment: testflight
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install tools
+        run: brew install xcodegen
+      - name: Write the API key
+        env:
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/keys"
+          printf '%s' "$ASC_KEY_P8" > "$RUNNER_TEMP/keys/AuthKey.p8"
+      - name: Archive
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        run: |
+          xcodegen generate
+          # A build number that only grows, as App Store Connect requires.
+          xcodebuild archive \
+            -project Pressay.xcodeproj \
+            -scheme Pressay \
+            -destination 'generic/platform=iOS' \
+            -archivePath "$RUNNER_TEMP/Pressay.xcarchive" \
+            CURRENT_PROJECT_VERSION="${{ github.run_number }}" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$RUNNER_TEMP/keys/AuthKey.p8" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
+            -quiet
+      - name: Upload
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        run: |
+          xcodebuild -exportArchive \
+            -archivePath "$RUNNER_TEMP/Pressay.xcarchive" \
+            -exportOptionsPlist scripts/ExportOptions.plist \
+            -exportPath "$RUNNER_TEMP/export" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$RUNNER_TEMP/keys/AuthKey.p8" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID"
+      - name: Remove the API key
+        if: always()
+        run: rm -rf "$RUNNER_TEMP/keys"

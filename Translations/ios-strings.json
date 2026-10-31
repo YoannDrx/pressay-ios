@@ -1,0 +1,34 @@
+{
+  "control.open.title": {
+    "en": "Open Pressay",
+    "fr": "Ouvrir Pressay"
+  },
+  "home.comingSoon": {
+    "en": "Dictation from the Action button arrives in the next test build.",
+    "fr": "La dictée depuis le bouton Action arrive dans la prochaine version de test."
+  },
+  "home.tagline": {
+    "en": "Dictate anywhere. Your voice never leaves your iPhone.",
+    "fr": "Dictez partout. Votre voix ne quitte jamais votre iPhone."
+  },
+  "home.title": {
+    "en": "Welcome to Pressay",
+    "fr": "Bienvenue dans Pressay"
+  },
+  "home.version": {
+    "en": "Version %1$@ (%2$@)",
+    "fr": "Version %1$@ (%2$@)"
+  },
+  "keyboard.fullAccessMissing": {
+    "en": "Turn on Full Access in Settings to dictate with Pressay.",
+    "fr": "Activez l’accès complet dans Réglages pour dicter avec Pressay."
+  },
+  "keyboard.nextKeyboard": {
+    "en": "Next keyboard",
+    "fr": "Clavier suivant"
+  },
+  "keyboard.ready": {
+    "en": "Pressay keyboard ready",
+    "fr": "Clavier Pressay prêt"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "history.title": "sidebar.history",
+  "permission.grant": "onboarding.permissions.grant",
+  "permission.granted": "onboarding.permissions.granted",
+  "permission.microphone.description": "onboarding.permissions.microphone.description",
+  "permission.microphone.title": "onboarding.permissions.microphone.title"
+}

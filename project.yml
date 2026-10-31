@@ -1,0 +1,124 @@
+name: Pressay
+options:
+  bundleIdPrefix: fr.yodev.pressay
+  deploymentTarget:
+    iOS: "26.0"
+  developmentLanguage: en
+  createIntermediateGroups: true
+settings:
+  base:
+    DEVELOPMENT_TEAM: G9WFV7HNV6
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    TARGETED_DEVICE_FAMILY: "1"
+    # The app and its extensions must ship the same version; CI overrides the build number.
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+    SWIFT_EMIT_LOC_STRINGS: YES
+packages:
+  PressayKit:
+    path: Packages/PressayKit
+targets:
+  Pressay:
+    type: application
+    platform: iOS
+    sources:
+      - App
+      - Shared
+      - Resources
+    dependencies:
+      - target: PressayWidgets
+      - target: PressayKeyboard
+      - package: PressayKit
+        product: PressayShared
+      - package: PressayKit
+        product: PressayCore
+    entitlements:
+      path: App/Pressay.entitlements
+      properties:
+        com.apple.security.application-groups: [group.fr.yodev.pressay]
+    settings:
+      base:
+        # Same bundle as the Mac App Store app, for universal purchase (decision D4).
+        PRODUCT_BUNDLE_IDENTIFIER: fr.yodev.pressay
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: Pressay
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleDevelopmentRegion: en
+        CFBundleLocalizations: [en, fr]
+        ITSAppUsesNonExemptEncryption: false
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+  PressayWidgets:
+    type: app-extension
+    platform: iOS
+    sources:
+      - Widgets
+      - Shared
+      - Resources
+    dependencies:
+      - package: PressayKit
+        product: PressayShared
+    entitlements:
+      path: Widgets/PressayWidgets.entitlements
+      properties:
+        com.apple.security.application-groups: [group.fr.yodev.pressay]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: fr.yodev.pressay.widgets
+    info:
+      path: Widgets/Info.plist
+      properties:
+        CFBundleDisplayName: Pressay
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleDevelopmentRegion: en
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+  PressayKeyboard:
+    type: app-extension
+    platform: iOS
+    sources:
+      - Keyboard
+      - Resources
+    dependencies:
+      # Only PressayShared: the keyboard's memory budget leaves no room for engines.
+      - package: PressayKit
+        product: PressayShared
+    entitlements:
+      path: Keyboard/PressayKeyboard.entitlements
+      properties:
+        com.apple.security.application-groups: [group.fr.yodev.pressay]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: fr.yodev.pressay.keyboard
+    info:
+      path: Keyboard/Info.plist
+      properties:
+        CFBundleDisplayName: Pressay
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleDevelopmentRegion: en
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.keyboard-service
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).KeyboardViewController
+          NSExtensionAttributes:
+            RequestsOpenAccess: true
+            PrimaryLanguage: fr-FR
+            IsASCIICapable: false
+            PrefersRightToLeft: false
+schemes:
+  Pressay:
+    build:
+      targets:
+        Pressay: all
+    run:
+      config: Debug
+    archive:
+      config: Release
