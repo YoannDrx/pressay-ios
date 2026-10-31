@@ -28,7 +28,9 @@ extension LogValue: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral, Expr
 
 /// Append-only JSON Lines journal in the App Group, readable from the app so a tester
 /// can share it. Writes are synchronous: intents and extensions can be suspended
-/// right after they return.
+/// right after they return. The app, the keyboard and the widgets append to the same
+/// file, so each line is written under a file lock: in the spike, unlocked writes from
+/// two processes corrupted 1 line in 1,488.
 public struct PressayLog: Sendable {
     private static let queue = DispatchQueue(label: "fr.yodev.pressay.log")
 
@@ -55,15 +57,17 @@ public struct PressayLog: Sendable {
         guard let url = fileURL,
               let data = try? JSONSerialization.data(withJSONObject: entry, options: [.sortedKeys])
         else { return }
+        var line = data
+        line.append(0x0A)
         Self.queue.sync {
-            var line = data
-            line.append(0x0A)
-            if let handle = try? FileHandle(forWritingTo: url) {
-                defer { try? handle.close() }
-                _ = try? handle.seekToEnd()
-                try? handle.write(contentsOf: line)
-            } else {
-                try? line.write(to: url)
+            try? lock(for: url).withLock {
+                if let handle = try? FileHandle(forWritingTo: url) {
+                    defer { try? handle.close() }
+                    _ = try? handle.seekToEnd()
+                    try? handle.write(contentsOf: line)
+                } else {
+                    try? line.write(to: url)
+                }
             }
         }
     }
@@ -75,6 +79,12 @@ public struct PressayLog: Sendable {
 
     public func clear() {
         guard let url = fileURL else { return }
-        Self.queue.sync { try? FileManager.default.removeItem(at: url) }
+        Self.queue.sync {
+            _ = try? lock(for: url).withLock { try? FileManager.default.removeItem(at: url) }
+        }
+    }
+
+    private func lock(for url: URL) -> FileLock {
+        FileLock(url: url.appendingPathExtension("lock"))
     }
 }

@@ -64,15 +64,7 @@ public struct ResultQueue: Sendable {
     }
 
     private func withLock<T>(_ body: () throws -> T) throws -> T {
-        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
-        let descriptor = open(lockURL.path, O_CREAT | O_RDWR, 0o644)
-        guard descriptor >= 0 else { throw POSIXError(POSIXErrorCode(rawValue: errno) ?? .EIO) }
-        defer { close(descriptor) }
-        guard flock(descriptor, LOCK_EX) == 0 else {
-            throw POSIXError(POSIXErrorCode(rawValue: errno) ?? .EIO)
-        }
-        defer { flock(descriptor, LOCK_UN) }
-        return try body()
+        try FileLock(url: lockURL).withLock(body)
     }
 }
 
