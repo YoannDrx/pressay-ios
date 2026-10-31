@@ -341,6 +341,23 @@
         }
       }
     },
+    "history.delete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer"
+          }
+        }
+      }
+    },
     "history.empty" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -354,6 +371,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucune dictée pour l’instant."
+          }
+        }
+      }
+    },
+    "history.privacy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your dictations stay on this iPhone, encrypted."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vos dictées restent sur cet iPhone, chiffrées."
           }
         }
       }
@@ -375,6 +409,23 @@
         }
       }
     },
+    "history.search" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search dictations"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rechercher dans les dictées"
+          }
+        }
+      }
+    },
     "history.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -388,6 +439,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Historique"
+          }
+        }
+      }
+    },
+    "home.copied" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copied"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copié"
           }
         }
       }
@@ -426,6 +494,23 @@
         }
       }
     },
+    "home.dictate.hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts a dictation. The text goes to the history and to the Pressay keyboard."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Démarre une dictée. Le texte va dans l’historique et au clavier Pressay."
+          }
+        }
+      }
+    },
     "home.lastDictation" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -439,6 +524,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dernière dictée"
+          }
+        }
+      }
+    },
+    "home.setup.body" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pressay writes in other apps through its keyboard, which needs Full Access."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pressay écrit dans les autres apps grâce à son clavier, qui a besoin de l’accès complet."
+          }
+        }
+      }
+    },
+    "home.setup.resume" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resume the guide (%1$lld of %2$lld done)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reprendre le guide (%1$lld sur %2$lld faites)"
+          }
+        }
+      }
+    },
+    "home.setup.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setup not finished"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuration à terminer"
           }
         }
       }
@@ -494,6 +630,23 @@
         }
       }
     },
+    "home.status.openSettings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose an engine"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisir un moteur"
+          }
+        }
+      }
+    },
     "home.status.recording" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -541,6 +694,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Arrêter"
+          }
+        }
+      }
+    },
+    "home.tab" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dictate"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dicter"
           }
         }
       }
@@ -626,6 +796,125 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dicter avec Pressay"
+          }
+        }
+      }
+    },
+    "journal.clear" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear the journal"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effacer le journal"
+          }
+        }
+      }
+    },
+    "journal.clear.confirm" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear the whole journal?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effacer tout le journal ?"
+          }
+        }
+      }
+    },
+    "journal.empty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The journal is empty"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le journal est vide"
+          }
+        }
+      }
+    },
+    "journal.explanation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Events of the app, the keyboard and the widgets, newest first. Only names, numbers and short codes: no dictated or typed text. Share it with support if they ask."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Événements de l’app, du clavier et des widgets, du plus récent au plus ancien. Seulement des noms, des nombres et des codes courts : aucun texte dicté ou tapé. Partagez-le avec le support s’il vous le demande."
+          }
+        }
+      }
+    },
+    "journal.more" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus"
+          }
+        }
+      }
+    },
+    "journal.share" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partager"
+          }
+        }
+      }
+    },
+    "journal.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Journal"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Journal"
           }
         }
       }
@@ -1480,6 +1769,23 @@
         }
       }
     },
+    "settings.dictation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dictation"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dictée"
+          }
+        }
+      }
+    },
     "settings.engine" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1493,6 +1799,142 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Moteur"
+          }
+        }
+      }
+    },
+    "settings.engine.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fast runs Pressay’s own engine, downloaded once. Apple uses the iPhone’s speech recognition. Both work on the iPhone, offline."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rapide utilise le moteur de Pressay, téléchargé une fois. Apple utilise la reconnaissance vocale de l’iPhone. Les deux fonctionnent sur l’iPhone, hors ligne."
+          }
+        }
+      }
+    },
+    "settings.feedback" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sounds and haptics"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sons et vibrations"
+          }
+        }
+      }
+    },
+    "settings.feedback.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sounds mark the start and the end of a dictation. Haptics also apply to the Pressay keyboard."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les sons marquent le début et la fin d’une dictée. Les vibrations s’appliquent aussi au clavier Pressay."
+          }
+        }
+      }
+    },
+    "settings.guide" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Replay the setup guide"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relancer le guide de configuration"
+          }
+        }
+      }
+    },
+    "settings.haptics" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haptics"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vibrations"
+          }
+        }
+      }
+    },
+    "settings.help" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Help"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aide"
+          }
+        }
+      }
+    },
+    "settings.journal.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The journal is for support: it holds timings and counts, never what you dictate or type."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le journal sert au support : il contient des durées et des nombres, jamais ce que vous dictez ou tapez."
+          }
+        }
+      }
+    },
+    "settings.keyboard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pressay keyboard"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clavier Pressay"
           }
         }
       }
@@ -1548,6 +1990,23 @@
         }
       }
     },
+    "settings.sounds" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sounds"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sons"
+          }
+        }
+      }
+    },
     "settings.stopOnSilence" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1578,6 +2037,1128 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réglages"
+          }
+        }
+      }
+    },
+    "setup.back" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retour"
+          }
+        }
+      }
+    },
+    "setup.continue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
+          }
+        }
+      }
+    },
+    "setup.done" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fait"
+          }
+        }
+      }
+    },
+    "setup.finish" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finish"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminer"
+          }
+        }
+      }
+    },
+    "setup.finished.incomplete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Almost there"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Presque prêt"
+          }
+        }
+      }
+    },
+    "setup.finished.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You’re all set"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C’est prêt"
+          }
+        }
+      }
+    },
+    "setup.firstDictation.field" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap here to dictate"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touchez ici pour dicter"
+          }
+        }
+      }
+    },
+    "setup.firstDictation.model" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downloading the Fast engine"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Téléchargement du moteur Rapide"
+          }
+        }
+      }
+    },
+    "setup.firstDictation.step1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap the field above."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touchez le champ ci-dessus."
+          }
+        }
+      }
+    },
+    "setup.firstDictation.step2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If another keyboard shows, switch to Pressay with the globe key."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si un autre clavier s’affiche, passez au clavier Pressay avec la touche globe."
+          }
+        }
+      }
+    },
+    "setup.firstDictation.step3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap the keyboard’s microphone, or long-press the Action button, and speak."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touchez le micro du clavier, ou faites un appui long sur le bouton Action, puis parlez."
+          }
+        }
+      }
+    },
+    "setup.firstDictation.step4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop talking for a moment: the text writes itself."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taisez-vous un instant : le texte s’écrit tout seul."
+          }
+        }
+      }
+    },
+    "setup.firstDictation.summary" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try it here, then in Notes or Messages."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Essayez ici, puis dans Notes ou Messages."
+          }
+        }
+      }
+    },
+    "setup.firstDictation.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Make your first dictation"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faire votre première dictée"
+          }
+        }
+      }
+    },
+    "setup.firstDictation.why" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Everything happens on the iPhone: the app transcribes, the keyboard inserts. If nothing is written, check that the Pressay keyboard is the one showing."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout se passe sur l’iPhone : l’app transcrit, le clavier insère. Si rien ne s’écrit, vérifiez que c’est bien le clavier Pressay qui est affiché."
+          }
+        }
+      }
+    },
+    "setup.fullAccess.field" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap here, then show the Pressay keyboard"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touchez ici, puis affichez le clavier Pressay"
+          }
+        }
+      }
+    },
+    "setup.fullAccess.step1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Settings, under Keyboards (or General > Keyboard > Keyboards > Pressay), turn on Allow Full Access, then tap Allow."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dans les Réglages, sous « Claviers » (ou Général > Clavier > Claviers > Pressay), activez « Autoriser l’accès complet », puis touchez « Autoriser »."
+          }
+        }
+      }
+    },
+    "setup.fullAccess.step2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Come back here and tap the field above."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revenez ici et touchez le champ ci-dessus."
+          }
+        }
+      }
+    },
+    "setup.fullAccess.step3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Switch to the Pressay keyboard with the globe key: the step ticks itself as soon as it shows."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passez au clavier Pressay avec la touche globe : l’étape se coche dès qu’il s’affiche."
+          }
+        }
+      }
+    },
+    "setup.fullAccess.summary" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Without it, the keyboard cannot receive the text from the app."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sans lui, le clavier ne peut pas recevoir le texte de l’app."
+          }
+        }
+      }
+    },
+    "setup.fullAccess.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn on Full Access"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activer l’accès complet"
+          }
+        }
+      }
+    },
+    "setup.fullAccess.why" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS shows the same warning for every third-party keyboard. Pressay uses Full Access only to receive the dictated text from the app, on the iPhone. The keyboard never goes online and does not record what you type."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS affiche le même avertissement pour tous les claviers tiers. Pressay s’en sert uniquement pour recevoir le texte dicté depuis l’app, sur l’iPhone. Le clavier n’utilise jamais Internet et n’enregistre pas ce que vous tapez."
+          }
+        }
+      }
+    },
+    "setup.keyboard.step1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap Open Settings."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touchez « Ouvrir les Réglages »."
+          }
+        }
+      }
+    },
+    "setup.keyboard.step2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap Keyboards, then turn on Pressay."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touchez « Claviers », puis activez « Pressay »."
+          }
+        }
+      }
+    },
+    "setup.keyboard.step3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Keyboards there? Go to General > Keyboard > Keyboards > Add New Keyboard > Pressay."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas de « Claviers » ? Allez dans Général > Clavier > Claviers > Ajouter un clavier > Pressay."
+          }
+        }
+      }
+    },
+    "setup.keyboard.step4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Come back here: the step ticks itself."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revenez ici : l’étape se coche toute seule."
+          }
+        }
+      }
+    },
+    "setup.keyboard.summary" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Pressay keyboard writes the dictated text in the field you are in."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C’est le clavier Pressay qui écrit le texte dicté dans le champ où vous êtes."
+          }
+        }
+      }
+    },
+    "setup.keyboard.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add the Pressay keyboard"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter le clavier Pressay"
+          }
+        }
+      }
+    },
+    "setup.keyboard.why" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS lets no app write in another one. Only a keyboard can: that is why Pressay comes with one. The globe key always brings back Apple’s keyboard."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS ne laisse aucune app écrire dans une autre. Seul un clavier le peut : c’est pour ça que Pressay en fournit un. La touche globe ramène toujours le clavier d’Apple."
+          }
+        }
+      }
+    },
+    "setup.later" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Later"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus tard"
+          }
+        }
+      }
+    },
+    "setup.microphone.step1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap the button below."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touchez le bouton ci-dessous."
+          }
+        }
+      }
+    },
+    "setup.microphone.step2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In the iOS prompt, choose Allow."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dans la fenêtre d’iOS, choisissez « Autoriser »."
+          }
+        }
+      }
+    },
+    "setup.microphone.summary" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pressay needs the microphone to hear you."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pressay a besoin du micro pour vous entendre."
+          }
+        }
+      }
+    },
+    "setup.microphone.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow the microphone"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser le micro"
+          }
+        }
+      }
+    },
+    "setup.microphone.why" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your voice is transcribed on the iPhone, by Pressay’s engine or Apple’s. No audio is sent over the internet, and none is kept once transcribed."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre voix est transcrite sur l’iPhone, par le moteur de Pressay ou celui d’Apple. Aucun son n’est envoyé sur Internet, et aucun n’est gardé après la transcription."
+          }
+        }
+      }
+    },
+    "setup.openSettings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Settings"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrir les Réglages"
+          }
+        }
+      }
+    },
+    "setup.progress" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step %1$lld of %2$lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Étape %1$lld sur %2$lld"
+          }
+        }
+      }
+    },
+    "setup.tip.elsewhere" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Now try it in Notes, Messages or Mail."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Essayez maintenant dans Notes, Messages ou Mail."
+          }
+        }
+      }
+    },
+    "setup.tip.globe" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The globe key switches back to Apple’s keyboard."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La touche globe ramène le clavier d’Apple."
+          }
+        }
+      }
+    },
+    "setup.tip.silence" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No need to press again: stop talking and the dictation ends by itself."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas besoin de rappuyer : taisez-vous et la dictée s’arrête toute seule."
+          }
+        }
+      }
+    },
+    "setup.tip.stop" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To stop right away, tap Stop in the Pressay keyboard."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour arrêter tout de suite, touchez « Arrêter » dans le clavier Pressay."
+          }
+        }
+      }
+    },
+    "setup.toDo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To do"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À faire"
+          }
+        }
+      }
+    },
+    "setup.trigger.actionButton.step1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open the Settings app, then Action Button."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrez l’app Réglages, puis « Bouton Action »."
+          }
+        }
+      }
+    },
+    "setup.trigger.actionButton.step2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swipe to Controls, then tap Choose a Control."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faites défiler jusqu’à « Commande », puis touchez « Choisir une commande »."
+          }
+        }
+      }
+    },
+    "setup.trigger.actionButton.step3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search for Pressay and choose Dictate."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cherchez « Pressay » et choisissez « Dicter »."
+          }
+        }
+      }
+    },
+    "setup.trigger.actionButton.step4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try it: long-press the Action button and speak. The step ticks itself."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Essayez : appui long sur le bouton Action, puis parlez. L’étape se coche toute seule."
+          }
+        }
+      }
+    },
+    "setup.trigger.actionButton.summary" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A long press on the Action button starts a dictation, wherever you are."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un appui long sur le bouton Action lance la dictée, où que vous soyez."
+          }
+        }
+      }
+    },
+    "setup.trigger.controlCenter.step1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swipe down from the top-right corner to open Control Center."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balayez vers le bas depuis le coin supérieur droit pour ouvrir le Centre de contrôle."
+          }
+        }
+      }
+    },
+    "setup.trigger.controlCenter.step2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap + at the top left, then Add a Control."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touchez « + » en haut à gauche, puis « Ajouter une commande »."
+          }
+        }
+      }
+    },
+    "setup.trigger.controlCenter.step3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search for Pressay and choose Dictate."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cherchez « Pressay » et choisissez « Dicter »."
+          }
+        }
+      }
+    },
+    "setup.trigger.controlCenter.step4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try it: tap Dictate and speak. The step ticks itself."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Essayez : touchez « Dicter », puis parlez. L’étape se coche toute seule."
+          }
+        }
+      }
+    },
+    "setup.trigger.controlCenter.summary" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your iPhone has no Action button: add Pressay to Control Center instead."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre iPhone n’a pas de bouton Action : ajoutez Pressay au Centre de contrôle."
+          }
+        }
+      }
+    },
+    "setup.trigger.hasActionButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My iPhone has an Action button"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mon iPhone a un bouton Action"
+          }
+        }
+      }
+    },
+    "setup.trigger.noActionButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My iPhone has no Action button"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mon iPhone n’a pas de bouton Action"
+          }
+        }
+      }
+    },
+    "setup.trigger.skip" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip for now"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passer pour l’instant"
+          }
+        }
+      }
+    },
+    "setup.trigger.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start a dictation in one gesture"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lancer la dictée d’un geste"
+          }
+        }
+      }
+    },
+    "setup.trigger.why" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No app can set the Action button or Control Center for you. iOS asks for a long press on the Action button to avoid starting by mistake. The dictation starts without opening Pressay."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucune app ne peut régler le bouton Action ou le Centre de contrôle à votre place. iOS demande un appui long sur le bouton Action pour éviter les déclenchements involontaires. La dictée démarre sans ouvrir Pressay."
+          }
+        }
+      }
+    },
+    "setup.waiting" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ticks itself once done"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se coche dès que c’est fait"
+          }
+        }
+      }
+    },
+    "setup.welcome.body" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Press, speak: Pressay writes in any text field. Five steps, about two minutes."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appuyez, parlez : Pressay écrit dans n’importe quel champ. Cinq étapes, environ deux minutes."
+          }
+        }
+      }
+    },
+    "setup.welcome.model" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pressay downloads its Fast engine (%@) while you set it up. Wi‑Fi recommended."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pressay télécharge son moteur Rapide (%@) pendant la configuration. Wi‑Fi conseillé."
+          }
+        }
+      }
+    },
+    "setup.welcome.promise.keyboard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Pressay keyboard writes the text where you are typing."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le clavier Pressay écrit le texte là où vous tapez."
+          }
+        }
+      }
+    },
+    "setup.welcome.promise.local" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your voice is transcribed on this iPhone. Nothing leaves it."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre voix est transcrite sur cet iPhone. Rien ne le quitte."
+          }
+        }
+      }
+    },
+    "setup.welcome.promise.trigger" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Action button starts a dictation from anywhere."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le bouton Action lance une dictée où que vous soyez."
+          }
+        }
+      }
+    },
+    "setup.welcome.start" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commencer"
+          }
+        }
+      }
+    },
+    "setup.welcome.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dictate in all your apps"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dictez dans toutes vos apps"
+          }
+        }
+      }
+    },
+    "setup.why" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Why?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pourquoi ?"
           }
         }
       }

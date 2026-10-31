@@ -16,6 +16,8 @@ final class DictationSettings {
         static let silenceDelay = "dictation.silenceDelay"
         static let silenceThreshold = "dictation.silenceThreshold"
         static let language = "dictation.language"
+        static let sounds = "feedback.sounds"
+        static let haptics = "feedback.haptics"
     }
 
     @ObservationIgnored private let defaults: UserDefaults
@@ -45,6 +47,21 @@ final class DictationSettings {
         didSet { defaults.set(language, forKey: Key.language) }
     }
 
+    /// A short system sound when a dictation starts and ends. Off by default: the start sound
+    /// plays while the microphone opens.
+    var sounds: Bool {
+        didSet { defaults.set(sounds, forKey: Key.sounds) }
+    }
+
+    /// Taps in the app at the start and the end of a dictation, and under each key of the
+    /// Pressay keyboard, which reads the value from the App Group.
+    var haptics: Bool {
+        didSet {
+            defaults.set(haptics, forKey: Key.haptics)
+            KeyboardPreferences.shared.haptics = haptics
+        }
+    }
+
     /// Read by the keyboard, so it lives in the App Group rather than in the app's defaults.
     var keyboardLayout: KeyboardLayoutSetting {
         didSet { KeyboardPreferences.shared.layout = keyboardLayout }
@@ -59,6 +76,8 @@ final class DictationSettings {
         let preferred = Locale.preferredLanguages.first.map { String($0.prefix(2)) } ?? "fr"
         language = defaults.string(forKey: Key.language) ?? (preferred == "en" ? "en" : "fr")
         keyboardLayout = KeyboardPreferences.shared.layout
+        sounds = defaults.object(forKey: Key.sounds) as? Bool ?? false
+        haptics = defaults.object(forKey: Key.haptics) as? Bool ?? true
     }
 
     var silenceConfiguration: SilenceDetector.Configuration {

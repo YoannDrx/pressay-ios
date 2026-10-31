@@ -56,6 +56,8 @@ final class DictationLink {
             "memoryMB": .double(memory.rounded(toPlaces: 1)),
         ])
         guard fullAccess else { return }
+        // Tells the app's setup guide that the keyboard is added and has Full Access.
+        SetupMarks.shared?.markKeyboardFullAccess()
         Self.observeOnce()
         refresh()
         // A result dictated while the keyboard was hidden, if it is recent enough.
@@ -160,6 +162,7 @@ final class DictationLink {
         host.recordEdits([.insert(text)], from: before)
         undo = InsertionUndo(text: text)
         lastInsertionAt = Date()
+        SetupMarks.shared?.markInsertion()
         PressayLog.shared.event("keyboard.inserted", [
             "trigger": .tag(trigger.description),
             "ageMs": .int(Int(Date().timeIntervalSince(result.createdAt) * 1000)),

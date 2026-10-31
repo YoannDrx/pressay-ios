@@ -1,3 +1,4 @@
+import CryptoKit
 import Foundation
 import PressayShared
 
@@ -42,27 +43,50 @@ public struct HistoryEntry: Codable, Sendable, Equatable, Identifiable {
     }
 }
 
-/// The app's local history: a JSON file outside the App Group, so neither the keyboard nor
-/// the widgets can read past dictations. Minimal until lot I4 encrypts it and adds search.
+/// The app's local history, outside the App Group so neither the keyboard nor the widgets
+/// can read past dictations.
+///
+/// Encrypted twice: the file is sealed with AES-GCM under a key that never leaves this
+/// iPhone (the app keeps it in the Keychain, `ThisDeviceOnly`), so a backup or a copied
+/// container holds only ciphertext; and iOS Data Protection encrypts the file at rest until
+/// the first unlock after a restart.
 public struct DictationHistory: Sendable {
     public static let capacity = 200
 
     public let fileURL: URL
+    private let key: SymmetricKey
 
-    public init(fileURL: URL) {
+    public init(fileURL: URL, key: SymmetricKey) {
         self.fileURL = fileURL
+        self.key = key
     }
 
     /// `Application Support/history.json` of the current process.
-    public static var applicationSupport: DictationHistory {
+    public static func applicationSupport(key: SymmetricKey) -> DictationHistory {
         let base = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-        return DictationHistory(fileURL: base.appendingPathComponent("history.json"))
+        return DictationHistory(fileURL: base.appendingPathComponent("history.json"), key: key)
     }
 
-    /// Newest first.
+    /// Newest first. A file written before encryption (builds of lots I2 and I3) is read as is.
     public func entries() throws -> [HistoryEntry] {
         guard let data = try? Data(contentsOf: fileURL), !data.isEmpty else { return [] }
-        return try JSONDecoder.history.decode([HistoryEntry].self, from: data)
+        if let legacy = Self.legacyEntries(data) {
+            return legacy
+        }
+        let box = try AES.GCM.SealedBox(combined: data)
+        let plain = try AES.GCM.open(box, using: key)
+        return try JSONDecoder.history.decode([HistoryEntry].self, from: plain)
+    }
+
+    /// Rewrites a history saved in clear by an earlier build, encrypted. Does nothing otherwise.
+    public func encryptLegacyFile() throws {
+        guard let data = try? Data(contentsOf: fileURL), let legacy = Self.legacyEntries(data) else { return }
+        try write(legacy)
+    }
+
+    public var isEncrypted: Bool {
+        guard let data = try? Data(contentsOf: fileURL), !data.isEmpty else { return true }
+        return Self.legacyEntries(data) == nil
     }
 
     public func add(_ entry: HistoryEntry) throws {
@@ -83,11 +107,20 @@ public struct DictationHistory: Sendable {
         try write([])
     }
 
+    private static func legacyEntries(_ data: Data) -> [HistoryEntry]? {
+        // Sealed boxes start with a random nonce, never with a JSON array.
+        guard data.first == UInt8(ascii: "[") else { return nil }
+        return try? JSONDecoder.history.decode([HistoryEntry].self, from: data)
+    }
+
     private func write(_ items: [HistoryEntry]) throws {
         try FileManager.default.createDirectory(
             at: fileURL.deletingLastPathComponent(), withIntermediateDirectories: true
         )
-        let data = try JSONEncoder.history.encode(items)
+        let plain = try JSONEncoder.history.encode(items)
+        guard let data = try AES.GCM.seal(plain, using: key).combined else {
+            throw CocoaError(.fileWriteUnknown)
+        }
         #if os(iOS)
         // Written after a dictation started from the Lock Screen.
         try data.write(to: fileURL, options: [.atomic, .completeFileProtectionUntilFirstUserAuthentication])

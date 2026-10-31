@@ -1,5 +1,6 @@
 {
   "engine.fast": "modelSelector.presets.fast",
+  "history.delete": "common.delete",
   "history.title": "sidebar.history",
   "home.copy": "common.copy",
   "permission.grant": "onboarding.permissions.grant",

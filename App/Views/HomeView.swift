@@ -3,93 +3,124 @@ import PressayShared
 import SwiftUI
 import UIKit
 
-/// The dictation home: a Dictate button to try Pressay without the Action button, the
-/// state of the current dictation, the last text, the Fast model and the settings.
+/// The dictation home: a large Dictate button to dictate without the Action button, where
+/// the dictation stands, and the last text with a Copy button.
 struct HomeView: View {
     @Environment(DictationController.self) private var dictation
+    @Environment(SetupGuideModel.self) private var guide
 
     var body: some View {
         NavigationStack {
-            List {
-                Section {
+            ScrollView {
+                VStack(spacing: 20) {
+                    if !guide.evidence.isReadyToDictate {
+                        SetupReminder()
+                    }
                     DictateCard()
-                } footer: {
+                    if let entry = dictation.lastEntry {
+                        LastDictationCard(entry: entry)
+                    }
                     Text("home.tagline")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
                 }
-                if let entry = dictation.lastEntry {
-                    Section("home.lastDictation") {
-                        LastDictationRow(entry: entry)
-                    }
-                }
-                Section {
-                    ModelRow()
-                } header: {
-                    Text("model.section")
-                } footer: {
-                    Text("model.footer")
-                }
-                SettingsSection()
-                Section {
-                    NavigationLink("history.title") {
-                        HistoryView()
-                    }
-                }
-                Section {
-                } footer: {
-                    Text(versionLabel)
-                        .frame(maxWidth: .infinity)
-                }
+                .padding(20)
             }
+            .background(Color(.systemGroupedBackground))
             .navigationTitle(Text(verbatim: "Pressay"))
         }
     }
+}
 
-    private var versionLabel: String {
-        let info = Bundle.main.infoDictionary ?? [:]
-        let version = info["CFBundleShortVersionString"] as? String ?? "?"
-        let build = info["CFBundleVersion"] as? String ?? "?"
-        return String(format: String(localized: "home.version"), version, build)
+/// Pressay cannot insert anything until the keyboard is set up: the home leads back to the
+/// guide, since iOS never offers Full Access by itself.
+private struct SetupReminder: View {
+    @Environment(SetupGuideModel.self) private var guide
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Label("home.setup.title", systemImage: "exclamationmark.circle.fill")
+                .font(.headline)
+                .foregroundStyle(.orange)
+            Text("home.setup.body")
+                .font(.callout)
+                .foregroundStyle(.secondary)
+            Button {
+                guide.open()
+            } label: {
+                Text(String(
+                    format: String(localized: "home.setup.resume"),
+                    guide.evidence.doneCount, SetupStep.allCases.count
+                ))
+                .frame(maxWidth: .infinity, minHeight: 36)
+            }
+            .buttonStyle(.bordered)
+            .accessibilityIdentifier("resumeSetup")
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(RoundedRectangle(cornerRadius: 20).fill(Color(.secondarySystemGroupedBackground)))
+        .accessibilityElement(children: .contain)
     }
 }
 
 private struct DictateCard: View {
     @Environment(DictationController.self) private var dictation
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
-        VStack(spacing: 16) {
+        let recording = dictation.phase == .recording
+        VStack(spacing: 20) {
             Button {
                 Task { await dictation.toggle(source: .app) }
             } label: {
-                Label(buttonTitle, systemImage: dictation.phase == .recording ? "stop.fill" : "mic.fill")
-                    .font(.title2.bold())
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity, minHeight: 56)
+                ZStack {
+                    Circle()
+                        .fill(recording ? Color.red : Color.accentColor)
+                        .shadow(color: (recording ? Color.red : Color.accentColor).opacity(0.35), radius: 16, y: 6)
+                    Image(systemName: recording ? "stop.fill" : "mic.fill")
+                        .font(.system(size: 52, weight: .semibold))
+                        .foregroundStyle(.white)
+                        .symbolEffect(.pulse, isActive: recording && !reduceMotion)
+                }
+                .frame(width: 160, height: 160)
+                .contentShape(Circle())
             }
-            .buttonStyle(.borderedProminent)
-            .tint(dictation.phase == .recording ? .red : .accentColor)
+            .buttonStyle(.plain)
             .disabled(dictation.phase == .transcribing || dictation.needsModelDownload)
+            .opacity(dictation.phase == .transcribing || dictation.needsModelDownload ? 0.5 : 1)
+            .accessibilityLabel(Text(recording ? "home.stop" : "home.dictate"))
+            .accessibilityHint(Text("home.dictate.hint"))
             .accessibilityIdentifier("dictate")
 
-            HStack(spacing: 8) {
-                if dictation.phase == .transcribing {
-                    ProgressView()
+            VStack(spacing: 6) {
+                HStack(spacing: 8) {
+                    if dictation.phase == .transcribing {
+                        ProgressView()
+                    }
+                    if recording, let start = dictation.recordingStartedAt {
+                        Text(timerInterval: start...Date.distantFuture, countsDown: false)
+                            .monospacedDigit()
+                    }
+                    Text(status)
+                        .foregroundStyle(dictation.phase == .failed ? .red : .secondary)
                 }
-                if dictation.phase == .recording, let start = dictation.recordingStartedAt {
-                    Text(timerInterval: start...Date.distantFuture, countsDown: false)
-                        .monospacedDigit()
+                .font(.callout)
+                .multilineTextAlignment(.center)
+                .accessibilityElement(children: .combine)
+                .accessibilityAddTraits(.updatesFrequently)
+                .accessibilityIdentifier("status")
+                if dictation.needsModelDownload {
+                    NavigationLink("home.status.openSettings") { EngineSettings() }
+                        .font(.callout)
                 }
-                Text(status)
-                    .foregroundStyle(dictation.phase == .failed ? .red : .secondary)
             }
-            .font(.callout)
-            .multilineTextAlignment(.center)
-            .accessibilityIdentifier("status")
         }
-        .padding(.vertical, 8)
-    }
-
-    private var buttonTitle: LocalizedStringKey {
-        dictation.phase == .recording ? "home.stop" : "home.dictate"
+        .padding(.vertical, 24)
+        .frame(maxWidth: .infinity)
+        .background(RoundedRectangle(cornerRadius: 24).fill(Color(.secondarySystemGroupedBackground)))
     }
 
     private var status: LocalizedStringResource {
@@ -106,24 +137,48 @@ private struct DictateCard: View {
     }
 }
 
-private struct LastDictationRow: View {
+private struct LastDictationCard: View {
     let entry: HistoryEntry
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("home.lastDictation")
+                .font(.headline)
+                .accessibilityAddTraits(.isHeader)
             Text(entry.text)
                 .textSelection(.enabled)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .accessibilityIdentifier("lastDictation")
             HStack {
                 EntryDetails(entry: entry)
                 Spacer()
-                Button("home.copy", systemImage: "doc.on.doc") {
-                    UIPasteboard.general.string = entry.text
-                }
-                .labelStyle(.iconOnly)
-                .buttonStyle(.borderless)
+                CopyButton(text: entry.text)
             }
         }
+        .padding(16)
+        .background(RoundedRectangle(cornerRadius: 20).fill(Color(.secondarySystemGroupedBackground)))
+    }
+}
+
+/// Copies a dictation and says so for a moment.
+struct CopyButton: View {
+    let text: String
+    @State private var copied = false
+
+    var body: some View {
+        Button {
+            UIPasteboard.general.string = text
+            copied = true
+            Task {
+                try? await Task.sleep(for: .seconds(1.5))
+                copied = false
+            }
+        } label: {
+            Label(copied ? "home.copied" : "home.copy", systemImage: copied ? "checkmark" : "doc.on.doc")
+        }
+        .buttonStyle(.bordered)
+        .sensoryFeedback(.success, trigger: copied) { _, new in new }
+        .accessibilityIdentifier("copyLastDictation")
     }
 }
 
@@ -145,96 +200,8 @@ struct EntryDetails: View {
     }
 }
 
-private struct ModelRow: View {
-    @Environment(DictationController.self) private var dictation
-
-    var body: some View {
-        let models = dictation.models
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Text("engine.fast")
-                    .font(.headline)
-                Spacer()
-                Text(sizeLabel(models.manifest.totalBytes))
-                    .foregroundStyle(.secondary)
-            }
-            switch models.state {
-            case .installed:
-                Label("model.installed", systemImage: "checkmark.circle.fill")
-                    .foregroundStyle(.green)
-                Button("model.remove", role: .destructive) { models.remove() }
-                    .buttonStyle(.borderless)
-            case let .downloading(fraction):
-                ProgressView(value: fraction) {
-                    Text("model.downloading")
-                } currentValueLabel: {
-                    Text(fraction, format: .percent.precision(.fractionLength(0)))
-                }
-                .accessibilityIdentifier("modelProgress")
-                Button("model.pause") { models.cancel() }
-                    .buttonStyle(.borderless)
-            case .notInstalled:
-                Button(models.downloadedBytes > 0 ? "model.resume" : "model.download") { models.download() }
-                    .buttonStyle(.borderless)
-                    .accessibilityIdentifier("downloadModel")
-            case let .failed(failure):
-                Text(message(for: failure))
-                    .foregroundStyle(.red)
-                    .font(.callout)
-                Button("model.retry") { models.download() }
-                    .buttonStyle(.borderless)
-            }
-        }
-    }
-
-    private func message(for failure: ModelLibrary.Failure) -> String {
-        switch failure {
-        case let .insufficientSpace(required):
-            String(format: String(localized: "model.failure.space"), sizeLabel(required))
-        case .network:
-            String(localized: "model.failure.network")
-        case .integrity:
-            String(localized: "model.failure.integrity")
-        }
-    }
-
-    private func sizeLabel(_ bytes: Int64) -> String {
-        ByteCountFormatter.string(fromByteCount: bytes, countStyle: .file)
-    }
-}
-
-private struct SettingsSection: View {
-    @Environment(DictationController.self) private var dictation
-
-    var body: some View {
-        @Bindable var settings = dictation.settings
-        Section("settings.title") {
-            Picker("settings.engine", selection: $settings.engine) {
-                Text("engine.fast").tag(EngineID.fast)
-                Text("engine.apple").tag(EngineID.apple)
-            }
-            Picker("settings.language", selection: $settings.language) {
-                Text("language.fr").tag("fr")
-                Text("language.en").tag("en")
-            }
-            Picker("settings.keyboardLayout", selection: $settings.keyboardLayout) {
-                Text("keyboardLayout.automatic").tag(KeyboardLayoutSetting.automatic)
-                Text("keyboardLayout.azerty").tag(KeyboardLayoutSetting.azerty)
-                Text("keyboardLayout.qwerty").tag(KeyboardLayoutSetting.qwerty)
-            }
-            Toggle("settings.stopOnSilence", isOn: $settings.stopOnSilence)
-            if settings.stopOnSilence {
-                Picker("settings.silenceDelay", selection: $settings.silenceDelay) {
-                    ForEach(DictationSettings.silenceDelays, id: \.self) { delay in
-                        Text(delay.formatted(.number.precision(.fractionLength(0...1))) + " s").tag(delay)
-                    }
-                }
-            }
-        }
-    }
-}
-
 #Preview {
     HomeView()
         .environment(DictationController.shared)
+        .environment(SetupGuideModel.shared)
 }
