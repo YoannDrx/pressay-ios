@@ -21,6 +21,9 @@ final class KeyboardViewController: UIInputViewController {
     private var rendered: RenderState?
     private var gridHeight: NSLayoutConstraint?
     private let haptics = UIImpactFeedbackGenerator(style: .light)
+    /// The app's Haptics setting, read once per appearance rather than at every key.
+    private var hapticsEnabled = true
+    private var assignedLanguage: String?
 
     override func loadView() {
         let input = KeyboardInputView(frame: .zero, inputViewStyle: .keyboard)
@@ -67,6 +70,7 @@ final class KeyboardViewController: UIInputViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        hapticsEnabled = hasFullAccess && KeyboardPreferences.shared.haptics
         configureForField(force: true)
         link.appear()
         updateBar()
@@ -110,7 +114,14 @@ final class KeyboardViewController: UIInputViewController {
         let proxy = textDocumentProxy
         let setting = hasFullAccess ? KeyboardPreferences.shared.layout : .automatic
         language = KeyboardLanguage.resolve(setting: setting, preferredLanguages: Locale.preferredLanguages)
-        primaryLanguage = language.primaryLanguage
+        // Only on a change: each assignment goes to the host, which answers with another
+        // `textDidChange`. Assigned every time, the two looped and pinned the host's main
+        // thread (seen with the app's own practice field, at 98 % CPU).
+        // Compared with what was assigned, not with the getter, which may return another form.
+        if assignedLanguage != language.primaryLanguage {
+            assignedLanguage = language.primaryLanguage
+            primaryLanguage = language.primaryLanguage
+        }
 
         // Another field, maybe in the same app: its text owes nothing to the previous one.
         if force || proxy.documentIdentifier != documentID {
@@ -127,7 +138,10 @@ final class KeyboardViewController: UIInputViewController {
         typing.autocapitalization = Self.autocapitalization(proxy.autocapitalizationType ?? .sentences)
         typing.periodShortcutEnabled = field == .text && proxy.smartInsertDeleteType != .no
         typing.textDidChange(contextBefore: contextBefore)
-        view.overrideUserInterfaceStyle = proxy.keyboardAppearance == .dark ? .dark : .unspecified
+        let style: UIUserInterfaceStyle = proxy.keyboardAppearance == .dark ? .dark : .unspecified
+        if view.overrideUserInterfaceStyle != style {
+            view.overrideUserInterfaceStyle = style
+        }
     }
 
     private static func fieldKind(for type: UIKeyboardType) -> FieldKind {
@@ -210,7 +224,9 @@ final class KeyboardViewController: UIInputViewController {
     private func feedback() {
         UIDevice.current.playInputClick()
         // Haptics need Full Access; without it the call does nothing.
-        haptics.impactOccurred()
+        if hapticsEnabled {
+            haptics.impactOccurred()
+        }
     }
 }
 
