@@ -57,7 +57,8 @@ final class DictationController {
     private(set) var phase: DictationPhase = .idle
     private(set) var failure: DictationFailure?
     private(set) var recordingStartedAt: Date?
-    private(set) var history: [HistoryEntry] = []
+    /// Newest first. Set by `DictationController+History`.
+    var history: [HistoryEntry] = []
 
     let settings = DictationSettings()
     let models: ModelLibrary
@@ -68,7 +69,8 @@ final class DictationController {
     @ObservationIgnored private let liveActivity = LiveActivityController()
     @ObservationIgnored private let background = BackgroundActivity(name: "transcription")
     @ObservationIgnored let captures = CaptureStore.shared
-    @ObservationIgnored private let historyStore = DictationHistory.applicationSupport
+    @ObservationIgnored var resolvedHistoryStore: DictationHistory?
+    @ObservationIgnored private let feedback = DictationFeedback()
     @ObservationIgnored private let session = SessionStore.shared
     @ObservationIgnored private var writer: CaptureWriter?
     @ObservationIgnored private var watchTask: Task<Void, Never>?
@@ -78,7 +80,7 @@ final class DictationController {
         let modelStore = ModelStore.applicationSupport
         models = ModelLibrary(store: modelStore)
         engines = EngineStore(modelStore: modelStore)
-        history = (try? historyStore.entries()) ?? []
+        loadHistory()
         models.onRemoved = { [engines] in
             Task { await engines.unloadFast() }
         }
@@ -101,11 +103,6 @@ final class DictationController {
 
     var lastEntry: HistoryEntry? { history.first }
 
-    /// No engine can run until the Fast model is downloaded.
-    var needsModelDownload: Bool {
-        models.state != .installed && !AppleSpeechTranscriber.isAvailable
-    }
-
     // MARK: Triggers
 
     func toggle(source: TriggerSource) async {
@@ -114,6 +111,10 @@ final class DictationController {
             "phase": .tag(machine.phase.rawValue),
             "appState": .tag(BackgroundActivity.applicationStateTag),
         ])
+        if source == .intent {
+            // Lets the setup guide tick its Action button step.
+            SetupMarks.shared?.markIntentUsed()
+        }
         await apply(machine.handle(.toggle), source: source)
     }
 
@@ -157,6 +158,7 @@ final class DictationController {
         guard let captures, let writer = try? captures.makeWriter(id: UUID()) else {
             return captureFailed(.storageUnavailable)
         }
+        feedback.started(settings)
         do {
             try capture.start(
                 writer: writer,
@@ -186,6 +188,7 @@ final class DictationController {
 
     private func captureFailed(_ reason: DictationFailure) {
         machine.handle(.captureFailed)
+        feedback.failed(settings)
         failure = reason
         setPhase(.failed)
         liveActivity.end(.failed)
@@ -265,6 +268,7 @@ final class DictationController {
             try publish(entry)
             captures.remove(id: captureID)
             machine.handle(.delivered)
+            feedback.delivered(settings)
             setPhase(.delivered)
             liveActivity.end(.delivered)
             PressayLog.shared.event("transcription.done", [
@@ -291,6 +295,7 @@ final class DictationController {
             captures?.remove(id: captureID)
         }
         machine.handle(.failed)
+        feedback.failed(settings)
         failure = reason
         setPhase(.failed)
         liveActivity.end(.failed)
@@ -302,26 +307,6 @@ final class DictationController {
         guard let queue = ResultQueue.shared else { throw ResultQueueUnavailable() }
         try queue.enqueue(entry.result)
         DarwinNotifier.post(PressaySignal.resultReady)
-    }
-
-    func addToHistory(_ entry: HistoryEntry) {
-        do {
-            try historyStore.add(entry)
-        } catch {
-            PressayLog.shared.event("history.writeFailed", ["error": ErrorTag.of(error)])
-        }
-        history.insert(entry, at: 0)
-        history.sort { $0.createdAt > $1.createdAt }
-    }
-
-    func removeFromHistory(_ entry: HistoryEntry) {
-        try? historyStore.remove(id: entry.id)
-        history.removeAll { $0.id == entry.id }
-    }
-
-    func clearHistory() {
-        try? historyStore.removeAll()
-        history.removeAll()
     }
 
     private func setPhase(_ newPhase: DictationPhase) {

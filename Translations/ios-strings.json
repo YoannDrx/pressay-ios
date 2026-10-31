@@ -79,17 +79,45 @@
     "en": "No dictation yet.",
     "fr": "Aucune dictée pour l’instant."
   },
+  "history.privacy": {
+    "en": "Your dictations stay on this iPhone, encrypted.",
+    "fr": "Vos dictées restent sur cet iPhone, chiffrées."
+  },
   "history.recovered": {
     "en": "Recovered",
     "fr": "Récupérée"
+  },
+  "history.search": {
+    "en": "Search dictations",
+    "fr": "Rechercher dans les dictées"
+  },
+  "home.copied": {
+    "en": "Copied",
+    "fr": "Copié"
   },
   "home.dictate": {
     "en": "Dictate",
     "fr": "Dicter"
   },
+  "home.dictate.hint": {
+    "en": "Starts a dictation. The text goes to the history and to the Pressay keyboard.",
+    "fr": "Démarre une dictée. Le texte va dans l’historique et au clavier Pressay."
+  },
   "home.lastDictation": {
     "en": "Last dictation",
     "fr": "Dernière dictée"
+  },
+  "home.setup.body": {
+    "en": "Pressay writes in other apps through its keyboard, which needs Full Access.",
+    "fr": "Pressay écrit dans les autres apps grâce à son clavier, qui a besoin de l’accès complet."
+  },
+  "home.setup.resume": {
+    "en": "Resume the guide (%1$lld of %2$lld done)",
+    "fr": "Reprendre le guide (%1$lld sur %2$lld faites)"
+  },
+  "home.setup.title": {
+    "en": "Setup not finished",
+    "fr": "Configuration à terminer"
   },
   "home.status.delivered": {
     "en": "Text ready: the Pressay keyboard inserts it.",
@@ -103,6 +131,10 @@
     "en": "Download the Fast engine to dictate.",
     "fr": "Téléchargez le moteur Rapide pour dicter."
   },
+  "home.status.openSettings": {
+    "en": "Choose an engine",
+    "fr": "Choisir un moteur"
+  },
   "home.status.recording": {
     "en": "Listening…",
     "fr": "J’écoute…"
@@ -114,6 +146,10 @@
   "home.stop": {
     "en": "Stop",
     "fr": "Arrêter"
+  },
+  "home.tab": {
+    "en": "Dictate",
+    "fr": "Dicter"
   },
   "home.tagline": {
     "en": "Dictate anywhere. Your voice never leaves your iPhone.",
@@ -134,6 +170,34 @@
   "intent.toggle.title": {
     "en": "Dictate with Pressay",
     "fr": "Dicter avec Pressay"
+  },
+  "journal.clear": {
+    "en": "Clear the journal",
+    "fr": "Effacer le journal"
+  },
+  "journal.clear.confirm": {
+    "en": "Clear the whole journal?",
+    "fr": "Effacer tout le journal ?"
+  },
+  "journal.empty": {
+    "en": "The journal is empty",
+    "fr": "Le journal est vide"
+  },
+  "journal.explanation": {
+    "en": "Events of the app, the keyboard and the widgets, newest first. Only names, numbers and short codes: no dictated or typed text. Share it with support if they ask.",
+    "fr": "Événements de l’app, du clavier et des widgets, du plus récent au plus ancien. Seulement des noms, des nombres et des codes courts : aucun texte dicté ou tapé. Partagez-le avec le support s’il vous le demande."
+  },
+  "journal.more": {
+    "en": "More",
+    "fr": "Plus"
+  },
+  "journal.share": {
+    "en": "Share",
+    "fr": "Partager"
+  },
+  "journal.title": {
+    "en": "Journal",
+    "fr": "Journal"
   },
   "keyboard.bar.actionButtonHint": {
     "en": "Press the Action button to dictate.",
@@ -319,9 +383,45 @@
     "en": "Engine",
     "fr": "Moteur"
   },
+  "settings.dictation": {
+    "en": "Dictation",
+    "fr": "Dictée"
+  },
   "settings.engine": {
     "en": "Engine",
     "fr": "Moteur"
+  },
+  "settings.engine.footer": {
+    "en": "Fast runs Pressay’s own engine, downloaded once. Apple uses the iPhone’s speech recognition. Both work on the iPhone, offline.",
+    "fr": "Rapide utilise le moteur de Pressay, téléchargé une fois. Apple utilise la reconnaissance vocale de l’iPhone. Les deux fonctionnent sur l’iPhone, hors ligne."
+  },
+  "settings.feedback": {
+    "en": "Sounds and haptics",
+    "fr": "Sons et vibrations"
+  },
+  "settings.feedback.footer": {
+    "en": "Sounds mark the start and the end of a dictation. Haptics also apply to the Pressay keyboard.",
+    "fr": "Les sons marquent le début et la fin d’une dictée. Les vibrations s’appliquent aussi au clavier Pressay."
+  },
+  "settings.guide": {
+    "en": "Replay the setup guide",
+    "fr": "Relancer le guide de configuration"
+  },
+  "settings.haptics": {
+    "en": "Haptics",
+    "fr": "Vibrations"
+  },
+  "settings.help": {
+    "en": "Help",
+    "fr": "Aide"
+  },
+  "settings.journal.footer": {
+    "en": "The journal is for support: it holds timings and counts, never what you dictate or type.",
+    "fr": "Le journal sert au support : il contient des durées et des nombres, jamais ce que vous dictez ou tapez."
+  },
+  "settings.keyboard": {
+    "en": "Pressay keyboard",
+    "fr": "Clavier Pressay"
   },
   "settings.keyboardLayout": {
     "en": "Keyboard layout",
@@ -335,6 +435,10 @@
     "en": "Silence before stopping",
     "fr": "Silence avant l’arrêt"
   },
+  "settings.sounds": {
+    "en": "Sounds",
+    "fr": "Sons"
+  },
   "settings.stopOnSilence": {
     "en": "Stop when I stop talking",
     "fr": "Arrêter quand je me tais"
@@ -342,6 +446,270 @@
   "settings.title": {
     "en": "Settings",
     "fr": "Réglages"
+  },
+  "setup.back": {
+    "en": "Back",
+    "fr": "Retour"
+  },
+  "setup.continue": {
+    "en": "Continue",
+    "fr": "Continuer"
+  },
+  "setup.done": {
+    "en": "Done",
+    "fr": "Fait"
+  },
+  "setup.finish": {
+    "en": "Finish",
+    "fr": "Terminer"
+  },
+  "setup.finished.incomplete": {
+    "en": "Almost there",
+    "fr": "Presque prêt"
+  },
+  "setup.finished.title": {
+    "en": "You’re all set",
+    "fr": "C’est prêt"
+  },
+  "setup.firstDictation.field": {
+    "en": "Tap here to dictate",
+    "fr": "Touchez ici pour dicter"
+  },
+  "setup.firstDictation.model": {
+    "en": "Downloading the Fast engine",
+    "fr": "Téléchargement du moteur Rapide"
+  },
+  "setup.firstDictation.step1": {
+    "en": "Tap the field above.",
+    "fr": "Touchez le champ ci-dessus."
+  },
+  "setup.firstDictation.step2": {
+    "en": "If another keyboard shows, switch to Pressay with the globe key.",
+    "fr": "Si un autre clavier s’affiche, passez au clavier Pressay avec la touche globe."
+  },
+  "setup.firstDictation.step3": {
+    "en": "Tap the keyboard’s microphone, or long-press the Action button, and speak.",
+    "fr": "Touchez le micro du clavier, ou faites un appui long sur le bouton Action, puis parlez."
+  },
+  "setup.firstDictation.step4": {
+    "en": "Stop talking for a moment: the text writes itself.",
+    "fr": "Taisez-vous un instant : le texte s’écrit tout seul."
+  },
+  "setup.firstDictation.summary": {
+    "en": "Try it here, then in Notes or Messages.",
+    "fr": "Essayez ici, puis dans Notes ou Messages."
+  },
+  "setup.firstDictation.title": {
+    "en": "Make your first dictation",
+    "fr": "Faire votre première dictée"
+  },
+  "setup.firstDictation.why": {
+    "en": "Everything happens on the iPhone: the app transcribes, the keyboard inserts. If nothing is written, check that the Pressay keyboard is the one showing.",
+    "fr": "Tout se passe sur l’iPhone : l’app transcrit, le clavier insère. Si rien ne s’écrit, vérifiez que c’est bien le clavier Pressay qui est affiché."
+  },
+  "setup.fullAccess.field": {
+    "en": "Tap here, then show the Pressay keyboard",
+    "fr": "Touchez ici, puis affichez le clavier Pressay"
+  },
+  "setup.fullAccess.step1": {
+    "en": "In Settings, under Keyboards (or General > Keyboard > Keyboards > Pressay), turn on Allow Full Access, then tap Allow.",
+    "fr": "Dans les Réglages, sous « Claviers » (ou Général > Clavier > Claviers > Pressay), activez « Autoriser l’accès complet », puis touchez « Autoriser »."
+  },
+  "setup.fullAccess.step2": {
+    "en": "Come back here and tap the field above.",
+    "fr": "Revenez ici et touchez le champ ci-dessus."
+  },
+  "setup.fullAccess.step3": {
+    "en": "Switch to the Pressay keyboard with the globe key: the step ticks itself as soon as it shows.",
+    "fr": "Passez au clavier Pressay avec la touche globe : l’étape se coche dès qu’il s’affiche."
+  },
+  "setup.fullAccess.summary": {
+    "en": "Without it, the keyboard cannot receive the text from the app.",
+    "fr": "Sans lui, le clavier ne peut pas recevoir le texte de l’app."
+  },
+  "setup.fullAccess.title": {
+    "en": "Turn on Full Access",
+    "fr": "Activer l’accès complet"
+  },
+  "setup.fullAccess.why": {
+    "en": "iOS shows the same warning for every third-party keyboard. Pressay uses Full Access only to receive the dictated text from the app, on the iPhone. The keyboard never goes online and does not record what you type.",
+    "fr": "iOS affiche le même avertissement pour tous les claviers tiers. Pressay s’en sert uniquement pour recevoir le texte dicté depuis l’app, sur l’iPhone. Le clavier n’utilise jamais Internet et n’enregistre pas ce que vous tapez."
+  },
+  "setup.keyboard.step1": {
+    "en": "Tap Open Settings.",
+    "fr": "Touchez « Ouvrir les Réglages »."
+  },
+  "setup.keyboard.step2": {
+    "en": "Tap Keyboards, then turn on Pressay.",
+    "fr": "Touchez « Claviers », puis activez « Pressay »."
+  },
+  "setup.keyboard.step3": {
+    "en": "No Keyboards there? Go to General > Keyboard > Keyboards > Add New Keyboard > Pressay.",
+    "fr": "Pas de « Claviers » ? Allez dans Général > Clavier > Claviers > Ajouter un clavier > Pressay."
+  },
+  "setup.keyboard.step4": {
+    "en": "Come back here: the step ticks itself.",
+    "fr": "Revenez ici : l’étape se coche toute seule."
+  },
+  "setup.keyboard.summary": {
+    "en": "The Pressay keyboard writes the dictated text in the field you are in.",
+    "fr": "C’est le clavier Pressay qui écrit le texte dicté dans le champ où vous êtes."
+  },
+  "setup.keyboard.title": {
+    "en": "Add the Pressay keyboard",
+    "fr": "Ajouter le clavier Pressay"
+  },
+  "setup.keyboard.why": {
+    "en": "iOS lets no app write in another one. Only a keyboard can: that is why Pressay comes with one. The globe key always brings back Apple’s keyboard.",
+    "fr": "iOS ne laisse aucune app écrire dans une autre. Seul un clavier le peut : c’est pour ça que Pressay en fournit un. La touche globe ramène toujours le clavier d’Apple."
+  },
+  "setup.later": {
+    "en": "Later",
+    "fr": "Plus tard"
+  },
+  "setup.microphone.step1": {
+    "en": "Tap the button below.",
+    "fr": "Touchez le bouton ci-dessous."
+  },
+  "setup.microphone.step2": {
+    "en": "In the iOS prompt, choose Allow.",
+    "fr": "Dans la fenêtre d’iOS, choisissez « Autoriser »."
+  },
+  "setup.microphone.summary": {
+    "en": "Pressay needs the microphone to hear you.",
+    "fr": "Pressay a besoin du micro pour vous entendre."
+  },
+  "setup.microphone.title": {
+    "en": "Allow the microphone",
+    "fr": "Autoriser le micro"
+  },
+  "setup.microphone.why": {
+    "en": "Your voice is transcribed on the iPhone, by Pressay’s engine or Apple’s. No audio is sent over the internet, and none is kept once transcribed.",
+    "fr": "Votre voix est transcrite sur l’iPhone, par le moteur de Pressay ou celui d’Apple. Aucun son n’est envoyé sur Internet, et aucun n’est gardé après la transcription."
+  },
+  "setup.openSettings": {
+    "en": "Open Settings",
+    "fr": "Ouvrir les Réglages"
+  },
+  "setup.progress": {
+    "en": "Step %1$lld of %2$lld",
+    "fr": "Étape %1$lld sur %2$lld"
+  },
+  "setup.tip.elsewhere": {
+    "en": "Now try it in Notes, Messages or Mail.",
+    "fr": "Essayez maintenant dans Notes, Messages ou Mail."
+  },
+  "setup.tip.globe": {
+    "en": "The globe key switches back to Apple’s keyboard.",
+    "fr": "La touche globe ramène le clavier d’Apple."
+  },
+  "setup.tip.silence": {
+    "en": "No need to press again: stop talking and the dictation ends by itself.",
+    "fr": "Pas besoin de rappuyer : taisez-vous et la dictée s’arrête toute seule."
+  },
+  "setup.tip.stop": {
+    "en": "To stop right away, tap Stop in the Pressay keyboard.",
+    "fr": "Pour arrêter tout de suite, touchez « Arrêter » dans le clavier Pressay."
+  },
+  "setup.toDo": {
+    "en": "To do",
+    "fr": "À faire"
+  },
+  "setup.trigger.actionButton.step1": {
+    "en": "Open the Settings app, then Action Button.",
+    "fr": "Ouvrez l’app Réglages, puis « Bouton Action »."
+  },
+  "setup.trigger.actionButton.step2": {
+    "en": "Swipe to Controls, then tap Choose a Control.",
+    "fr": "Faites défiler jusqu’à « Commande », puis touchez « Choisir une commande »."
+  },
+  "setup.trigger.actionButton.step3": {
+    "en": "Search for Pressay and choose Dictate.",
+    "fr": "Cherchez « Pressay » et choisissez « Dicter »."
+  },
+  "setup.trigger.actionButton.step4": {
+    "en": "Try it: long-press the Action button and speak. The step ticks itself.",
+    "fr": "Essayez : appui long sur le bouton Action, puis parlez. L’étape se coche toute seule."
+  },
+  "setup.trigger.actionButton.summary": {
+    "en": "A long press on the Action button starts a dictation, wherever you are.",
+    "fr": "Un appui long sur le bouton Action lance la dictée, où que vous soyez."
+  },
+  "setup.trigger.controlCenter.step1": {
+    "en": "Swipe down from the top-right corner to open Control Center.",
+    "fr": "Balayez vers le bas depuis le coin supérieur droit pour ouvrir le Centre de contrôle."
+  },
+  "setup.trigger.controlCenter.step2": {
+    "en": "Tap + at the top left, then Add a Control.",
+    "fr": "Touchez « + » en haut à gauche, puis « Ajouter une commande »."
+  },
+  "setup.trigger.controlCenter.step3": {
+    "en": "Search for Pressay and choose Dictate.",
+    "fr": "Cherchez « Pressay » et choisissez « Dicter »."
+  },
+  "setup.trigger.controlCenter.step4": {
+    "en": "Try it: tap Dictate and speak. The step ticks itself.",
+    "fr": "Essayez : touchez « Dicter », puis parlez. L’étape se coche toute seule."
+  },
+  "setup.trigger.controlCenter.summary": {
+    "en": "Your iPhone has no Action button: add Pressay to Control Center instead.",
+    "fr": "Votre iPhone n’a pas de bouton Action : ajoutez Pressay au Centre de contrôle."
+  },
+  "setup.trigger.hasActionButton": {
+    "en": "My iPhone has an Action button",
+    "fr": "Mon iPhone a un bouton Action"
+  },
+  "setup.trigger.noActionButton": {
+    "en": "My iPhone has no Action button",
+    "fr": "Mon iPhone n’a pas de bouton Action"
+  },
+  "setup.trigger.skip": {
+    "en": "Skip for now",
+    "fr": "Passer pour l’instant"
+  },
+  "setup.trigger.title": {
+    "en": "Start a dictation in one gesture",
+    "fr": "Lancer la dictée d’un geste"
+  },
+  "setup.trigger.why": {
+    "en": "No app can set the Action button or Control Center for you. iOS asks for a long press on the Action button to avoid starting by mistake. The dictation starts without opening Pressay.",
+    "fr": "Aucune app ne peut régler le bouton Action ou le Centre de contrôle à votre place. iOS demande un appui long sur le bouton Action pour éviter les déclenchements involontaires. La dictée démarre sans ouvrir Pressay."
+  },
+  "setup.waiting": {
+    "en": "Ticks itself once done",
+    "fr": "Se coche dès que c’est fait"
+  },
+  "setup.welcome.body": {
+    "en": "Press, speak: Pressay writes in any text field. Five steps, about two minutes.",
+    "fr": "Appuyez, parlez : Pressay écrit dans n’importe quel champ. Cinq étapes, environ deux minutes."
+  },
+  "setup.welcome.model": {
+    "en": "Pressay downloads its Fast engine (%@) while you set it up. Wi‑Fi recommended.",
+    "fr": "Pressay télécharge son moteur Rapide (%@) pendant la configuration. Wi‑Fi conseillé."
+  },
+  "setup.welcome.promise.keyboard": {
+    "en": "The Pressay keyboard writes the text where you are typing.",
+    "fr": "Le clavier Pressay écrit le texte là où vous tapez."
+  },
+  "setup.welcome.promise.local": {
+    "en": "Your voice is transcribed on this iPhone. Nothing leaves it.",
+    "fr": "Votre voix est transcrite sur cet iPhone. Rien ne le quitte."
+  },
+  "setup.welcome.promise.trigger": {
+    "en": "The Action button starts a dictation from anywhere.",
+    "fr": "Le bouton Action lance une dictée où que vous soyez."
+  },
+  "setup.welcome.start": {
+    "en": "Start",
+    "fr": "Commencer"
+  },
+  "setup.welcome.title": {
+    "en": "Dictate in all your apps",
+    "fr": "Dictez dans toutes vos apps"
+  },
+  "setup.why": {
+    "en": "Why?",
+    "fr": "Pourquoi ?"
   },
   "shortcut.dictate.title": {
     "en": "Dictate",
