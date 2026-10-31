@@ -12,11 +12,11 @@ final class LiveActivityController {
     @discardableResult
     func start(startedAt: Date) -> Bool {
         self.startedAt = startedAt
-        let stale = Activity<DictationActivityAttributes>.activities
+        let stale = Activity<DictationActivityAttributes>.activities.map(SendableActivity.init)
         if !stale.isEmpty {
             Task {
-                for activity in stale {
-                    await activity.end(nil, dismissalPolicy: .immediate)
+                for item in stale {
+                    await item.end(nil, dismissalPolicy: .immediate)
                 }
             }
         }
@@ -37,18 +37,37 @@ final class LiveActivityController {
 
     func update(_ phase: DictationPhase) {
         guard let activity else { return }
+        let item = SendableActivity(activity: activity)
         let content = ActivityContent(state: state(phase), staleDate: nil)
-        Task { await activity.update(content) }
+        Task { await item.update(content) }
     }
 
     func end(_ phase: DictationPhase) {
         guard let activity else { return }
+        let item = SendableActivity(activity: activity)
         let content = ActivityContent(state: state(phase), staleDate: nil)
-        Task { await activity.end(content, dismissalPolicy: .after(Date().addingTimeInterval(4))) }
+        Task { await item.end(content, dismissalPolicy: .after(Date().addingTimeInterval(4))) }
         self.activity = nil
     }
 
     private func state(_ phase: DictationPhase) -> DictationActivityAttributes.ContentState {
         .init(phase: phase, startedAt: startedAt)
+    }
+}
+
+/// Some SDKs (iOS 26.5) do not mark `Activity` as `Sendable`, though ActivityKit documents
+/// its methods as safe to call from any task; this hands one to a task without a warning.
+private struct SendableActivity: @unchecked Sendable {
+    let activity: Activity<DictationActivityAttributes>
+
+    func update(_ content: ActivityContent<DictationActivityAttributes.ContentState>) async {
+        await activity.update(content)
+    }
+
+    func end(
+        _ content: ActivityContent<DictationActivityAttributes.ContentState>?,
+        dismissalPolicy: ActivityUIDismissalPolicy
+    ) async {
+        await activity.end(content, dismissalPolicy: dismissalPolicy)
     }
 }
