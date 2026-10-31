@@ -1,23 +1,139 @@
 {
-  "control.open.title": {
-    "en": "Open Pressay",
-    "fr": "Ouvrir Pressay"
+  "activity.delivered": {
+    "en": "Text ready for the Pressay keyboard",
+    "fr": "Texte prêt pour le clavier Pressay"
   },
-  "home.comingSoon": {
-    "en": "Dictation from the Action button arrives in the next test build.",
-    "fr": "La dictée depuis le bouton Action arrive dans la prochaine version de test."
+  "activity.failed": {
+    "en": "No text this time",
+    "fr": "Aucun texte cette fois"
+  },
+  "activity.idle": {
+    "en": "Pressay",
+    "fr": "Pressay"
+  },
+  "activity.recording": {
+    "en": "Listening…",
+    "fr": "J’écoute…"
+  },
+  "activity.stop": {
+    "en": "Stop",
+    "fr": "Arrêter"
+  },
+  "activity.transcribing": {
+    "en": "Transcribing…",
+    "fr": "Transcription…"
+  },
+  "control.dictate.description": {
+    "en": "Starts or stops a dictation without opening Pressay.",
+    "fr": "Démarre ou arrête une dictée sans ouvrir Pressay."
+  },
+  "control.dictate.title": {
+    "en": "Dictate",
+    "fr": "Dicter"
+  },
+  "engine.apple": {
+    "en": "Apple",
+    "fr": "Apple"
+  },
+  "failure.microphoneDenied": {
+    "en": "Pressay cannot use the microphone. Allow it in Settings > Pressay.",
+    "fr": "Pressay n’a pas accès au micro. Autorisez-le dans Réglages > Pressay."
+  },
+  "failure.microphoneUnavailable": {
+    "en": "The microphone is busy or unavailable.",
+    "fr": "Le micro est occupé ou indisponible."
+  },
+  "failure.noEngine": {
+    "en": "Download the Fast engine: your dictation will be transcribed then.",
+    "fr": "Téléchargez le moteur Rapide : votre dictée sera alors transcrite."
+  },
+  "failure.noSpeech": {
+    "en": "No speech heard.",
+    "fr": "Aucune parole entendue."
+  },
+  "failure.nothingRecognized": {
+    "en": "No words recognized.",
+    "fr": "Aucun mot reconnu."
+  },
+  "failure.storageUnavailable": {
+    "en": "Pressay could not hand the text to its keyboard. It is in the history.",
+    "fr": "Pressay n’a pas pu transmettre le texte à son clavier. Il est dans l’historique."
+  },
+  "failure.tooShort": {
+    "en": "Too short to transcribe.",
+    "fr": "Trop court pour être transcrit."
+  },
+  "failure.transcriptionFailed": {
+    "en": "The transcription failed. Pressay will retry at the next launch.",
+    "fr": "La transcription a échoué. Pressay réessaiera au prochain lancement."
+  },
+  "history.clear": {
+    "en": "Clear history",
+    "fr": "Effacer l’historique"
+  },
+  "history.clear.confirm": {
+    "en": "Delete every dictation from this iPhone?",
+    "fr": "Supprimer toutes les dictées de cet iPhone ?"
+  },
+  "history.empty": {
+    "en": "No dictation yet.",
+    "fr": "Aucune dictée pour l’instant."
+  },
+  "history.recovered": {
+    "en": "Recovered",
+    "fr": "Récupérée"
+  },
+  "home.dictate": {
+    "en": "Dictate",
+    "fr": "Dicter"
+  },
+  "home.lastDictation": {
+    "en": "Last dictation",
+    "fr": "Dernière dictée"
+  },
+  "home.status.delivered": {
+    "en": "Text ready: the Pressay keyboard inserts it.",
+    "fr": "Texte prêt : le clavier Pressay l’insère."
+  },
+  "home.status.idle": {
+    "en": "Tap Dictate, or press the Action button once it is set up.",
+    "fr": "Touchez Dicter, ou appuyez sur le bouton Action une fois réglé."
+  },
+  "home.status.needsModel": {
+    "en": "Download the Fast engine to dictate.",
+    "fr": "Téléchargez le moteur Rapide pour dicter."
+  },
+  "home.status.recording": {
+    "en": "Listening…",
+    "fr": "J’écoute…"
+  },
+  "home.status.transcribing": {
+    "en": "Transcribing on your iPhone…",
+    "fr": "Transcription sur votre iPhone…"
+  },
+  "home.stop": {
+    "en": "Stop",
+    "fr": "Arrêter"
   },
   "home.tagline": {
     "en": "Dictate anywhere. Your voice never leaves your iPhone.",
     "fr": "Dictez partout. Votre voix ne quitte jamais votre iPhone."
   },
-  "home.title": {
-    "en": "Welcome to Pressay",
-    "fr": "Bienvenue dans Pressay"
-  },
   "home.version": {
     "en": "Version %1$@ (%2$@)",
     "fr": "Version %1$@ (%2$@)"
+  },
+  "intent.stop.title": {
+    "en": "Stop the dictation",
+    "fr": "Arrêter la dictée"
+  },
+  "intent.toggle.description": {
+    "en": "Starts or stops a dictation without opening the app.",
+    "fr": "Démarre ou arrête une dictée sans ouvrir l’app."
+  },
+  "intent.toggle.title": {
+    "en": "Dictate with Pressay",
+    "fr": "Dicter avec Pressay"
   },
   "keyboard.fullAccessMissing": {
     "en": "Turn on Full Access in Settings to dictate with Pressay.",
@@ -30,5 +146,85 @@
   "keyboard.ready": {
     "en": "Pressay keyboard ready",
     "fr": "Clavier Pressay prêt"
+  },
+  "language.en": {
+    "en": "English",
+    "fr": "Anglais"
+  },
+  "language.fr": {
+    "en": "French",
+    "fr": "Français"
+  },
+  "model.download": {
+    "en": "Download",
+    "fr": "Télécharger"
+  },
+  "model.downloading": {
+    "en": "Downloading…",
+    "fr": "Téléchargement…"
+  },
+  "model.failure.integrity": {
+    "en": "A downloaded file failed verification and was deleted. Retry.",
+    "fr": "Un fichier téléchargé n’a pas passé la vérification et a été supprimé. Réessayez."
+  },
+  "model.failure.network": {
+    "en": "The download stopped. Retry: it resumes where it left off.",
+    "fr": "Le téléchargement s’est interrompu. Réessayez : il reprendra là où il s’est arrêté."
+  },
+  "model.failure.space": {
+    "en": "Not enough space: free %1$@ and retry.",
+    "fr": "Espace insuffisant : libérez %1$@ puis réessayez."
+  },
+  "model.footer": {
+    "en": "Downloaded once, then everything runs on your iPhone. Each file is checked before use.",
+    "fr": "Téléchargé une fois, puis tout se passe sur votre iPhone. Chaque fichier est vérifié avant usage."
+  },
+  "model.installed": {
+    "en": "Installed",
+    "fr": "Installé"
+  },
+  "model.pause": {
+    "en": "Pause",
+    "fr": "Mettre en pause"
+  },
+  "model.remove": {
+    "en": "Delete the model",
+    "fr": "Supprimer le modèle"
+  },
+  "model.resume": {
+    "en": "Resume the download",
+    "fr": "Reprendre le téléchargement"
+  },
+  "model.retry": {
+    "en": "Retry",
+    "fr": "Réessayer"
+  },
+  "model.section": {
+    "en": "Engine",
+    "fr": "Moteur"
+  },
+  "settings.engine": {
+    "en": "Engine",
+    "fr": "Moteur"
+  },
+  "settings.language": {
+    "en": "Language",
+    "fr": "Langue"
+  },
+  "settings.silenceDelay": {
+    "en": "Silence before stopping",
+    "fr": "Silence avant l’arrêt"
+  },
+  "settings.stopOnSilence": {
+    "en": "Stop when I stop talking",
+    "fr": "Arrêter quand je me tais"
+  },
+  "settings.title": {
+    "en": "Settings",
+    "fr": "Réglages"
+  },
+  "shortcut.dictate.title": {
+    "en": "Dictate",
+    "fr": "Dicter"
   }
 }

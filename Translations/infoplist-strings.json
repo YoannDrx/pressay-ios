@@ -1,0 +1,10 @@
+{
+  "NSMicrophoneUsageDescription": {
+    "en": "Pressay listens to your voice while you dictate and transcribes it on your iPhone.",
+    "fr": "Pressay écoute votre voix pendant la dictée et la transcrit sur votre iPhone."
+  },
+  "NSSpeechRecognitionUsageDescription": {
+    "en": "Pressay can use Apple’s on-device speech recognition when its own engine is not downloaded.",
+    "fr": "Pressay peut utiliser la reconnaissance vocale d’Apple, sur l’appareil, tant que son propre moteur n’est pas téléchargé."
+  }
+}
