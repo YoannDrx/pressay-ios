@@ -1,5 +1,7 @@
 {
+  "engine.fast": "modelSelector.presets.fast",
   "history.title": "sidebar.history",
+  "home.copy": "common.copy",
   "permission.grant": "onboarding.permissions.grant",
   "permission.granted": "onboarding.permissions.granted",
   "permission.microphone.description": "onboarding.permissions.microphone.description",

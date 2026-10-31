@@ -1,0 +1,40 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "NSMicrophoneUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pressay listens to your voice while you dictate and transcribes it on your iPhone."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pressay écoute votre voix pendant la dictée et la transcrit sur votre iPhone."
+          }
+        }
+      }
+    },
+    "NSSpeechRecognitionUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pressay can use Apple’s on-device speech recognition when its own engine is not downloaded."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pressay peut utiliser la reconnaissance vocale d’Apple, sur l’appareil, tant que son propre moteur n’est pas téléchargé."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

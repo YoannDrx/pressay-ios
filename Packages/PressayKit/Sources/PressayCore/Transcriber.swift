@@ -17,7 +17,16 @@ public enum TranscriptionAudio {
     public static let sampleRate: Double = 16_000
 }
 
-/// A local speech-to-text engine. Implementations land in lot I2.
+public enum TranscriberError: Error, Equatable, Sendable {
+    /// The engine's model is not loaded.
+    case notReady
+    /// No engine can run: the Fast model is not downloaded and Apple's is unavailable.
+    case noEngine
+    /// The engine does not support the requested language on this device.
+    case unsupportedLanguage
+}
+
+/// A local speech-to-text engine. The app implements it with FluidAudio and `SpeechAnalyzer`.
 /// Engines must run on CPU or Neural Engine only: iOS refuses Metal in the background.
 public protocol Transcriber: AnyObject, Sendable {
     var engine: EngineID { get }

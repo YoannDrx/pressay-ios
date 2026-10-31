@@ -27,6 +27,16 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Pressay listens to your voice while you dictate and transcribes it on your iPhone.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Pressay can use Apple’s on-device speech recognition when its own engine is not downloaded.</string>
+	<key>NSSupportsLiveActivities</key>
+	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
 	<key>UILaunchScreen</key>
 	<dict/>
 	<key>UISupportedInterfaceOrientations</key>

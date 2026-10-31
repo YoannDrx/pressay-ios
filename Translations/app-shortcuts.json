@@ -1,0 +1,10 @@
+{
+  "Dictate with ${applicationName}": {
+    "en": "Dictate with ${applicationName}",
+    "fr": "Dicter avec ${applicationName}"
+  },
+  "Start a dictation in ${applicationName}": {
+    "en": "Start a dictation in ${applicationName}",
+    "fr": "Lancer une dictée dans ${applicationName}"
+  }
+}

@@ -3,6 +3,8 @@ import SwiftUI
 
 @main
 struct PressayApp: App {
+    @State private var dictation = DictationController.shared
+
     init() {
         PressayLog.shared.event("app.launched")
     }
@@ -10,6 +12,7 @@ struct PressayApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .environment(dictation)
         }
     }
 }

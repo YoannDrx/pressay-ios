@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
-"""Builds Resources/Localizable.xcstrings for the app and its extensions.
+"""Builds the string catalogs of the app and its extensions.
 
-Two sources feed the catalog:
+Resources/Localizable.xcstrings, shared by every target, has two sources:
 - Translations/reused-keys.json maps iOS keys to keys of the desktop app's
   src/i18n/locales/{en,fr}/translation.json, so shared wording stays identical;
 - Translations/ios-strings.json holds the iPhone-only strings.
+
+Two more catalogs belong to the app target only:
+- App/InfoPlist.xcstrings, from Translations/infoplist-strings.json (permission prompts);
+- App/AppShortcuts.xcstrings, from Translations/app-shortcuts.json (Siri phrases, keyed by
+  the English phrase with ${applicationName}, as the AppShortcutsProvider declares it).
 
 Usage:
   scripts/build-string-catalog.py            regenerate the catalog
@@ -27,6 +32,12 @@ ROOT = Path(__file__).resolve().parent.parent
 CATALOG = ROOT / "Resources" / "Localizable.xcstrings"
 REUSED = ROOT / "Translations" / "reused-keys.json"
 IOS_ONLY = ROOT / "Translations" / "ios-strings.json"
+# Catalogs built from one iPhone-only source each: (catalog, source).
+STANDALONE = (
+    (ROOT / "App" / "InfoPlist.xcstrings", ROOT / "Translations" / "infoplist-strings.json"),
+    (ROOT / "App" / "AppShortcuts.xcstrings", ROOT / "Translations" / "app-shortcuts.json"),
+)
+APP_NAME_PLACEHOLDER = "${applicationName}"
 LANGUAGES = ("en", "fr")
 SOURCE_LANGUAGE = "en"
 
@@ -88,6 +99,10 @@ def collect_strings(errors: list[str]) -> dict[str, dict[str, str]]:
     return strings
 
 
+def collect_standalone(source: Path) -> dict[str, dict[str, str]]:
+    return {key: {lang: values[lang] for lang in LANGUAGES if values.get(lang)} for key, values in load_json(source).items()}
+
+
 def render(strings: dict[str, dict[str, str]]) -> str:
     catalog = {
         "sourceLanguage": SOURCE_LANGUAGE,
@@ -126,6 +141,8 @@ def validate(strings: dict[str, dict[str, str]], errors: list[str]) -> None:
         specifiers = {lang: sorted(FORMAT_SPECIFIER.findall(values.get(lang, ""))) for lang in LANGUAGES}
         if len({tuple(found) for found in specifiers.values()}) > 1:
             errors.append(f"{key}: placeholders differ between languages {specifiers}")
+        if APP_NAME_PLACEHOLDER in key and not all(APP_NAME_PLACEHOLDER in values.get(lang, "") for lang in LANGUAGES):
+            errors.append(f"{key}: every phrase must contain {APP_NAME_PLACEHOLDER}")
 
 
 def main() -> int:
@@ -134,6 +151,23 @@ def main() -> int:
     args = parser.parse_args()
     errors: list[str] = []
     has_desktop = (desktop_dir() / "src" / "i18n" / "locales").is_dir()
+
+    for catalog, source in STANDALONE:
+        expected = render(collect_standalone(source))
+        name = catalog.relative_to(ROOT)
+        if args.check:
+            if not catalog.exists():
+                errors.append(f"{name} is missing")
+                continue
+            committed_standalone = catalog.read_text(encoding="utf-8")
+            validate(strings_from_catalog(committed_standalone), errors)
+            if committed_standalone != expected:
+                errors.append(f"{name} is out of date: run scripts/build-string-catalog.py")
+        else:
+            validate(collect_standalone(source), errors)
+            if not errors:
+                catalog.write_text(expected, encoding="utf-8")
+                print(f"wrote {name}")
 
     if args.check:
         committed = CATALOG.read_text(encoding="utf-8") if CATALOG.exists() else None
