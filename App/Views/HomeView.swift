@@ -217,6 +217,11 @@ private struct SettingsSection: View {
                 Text("language.fr").tag("fr")
                 Text("language.en").tag("en")
             }
+            Picker("settings.keyboardLayout", selection: $settings.keyboardLayout) {
+                Text("keyboardLayout.automatic").tag(KeyboardLayoutSetting.automatic)
+                Text("keyboardLayout.azerty").tag(KeyboardLayoutSetting.azerty)
+                Text("keyboardLayout.qwerty").tag(KeyboardLayoutSetting.qwerty)
+            }
             Toggle("settings.stopOnSilence", isOn: $settings.stopOnSilence)
             if settings.stopOnSilence {
                 Picker("settings.silenceDelay", selection: $settings.silenceDelay) {

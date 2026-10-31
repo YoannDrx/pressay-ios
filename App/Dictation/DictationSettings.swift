@@ -1,6 +1,7 @@
 import Foundation
 import Observation
 import PressayCore
+import PressayShared
 
 /// The user's dictation preferences, stored in the app's own defaults.
 @MainActor
@@ -44,6 +45,11 @@ final class DictationSettings {
         didSet { defaults.set(language, forKey: Key.language) }
     }
 
+    /// Read by the keyboard, so it lives in the App Group rather than in the app's defaults.
+    var keyboardLayout: KeyboardLayoutSetting {
+        didSet { KeyboardPreferences.shared.layout = keyboardLayout }
+    }
+
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
         engine = defaults.string(forKey: Key.engine).flatMap(EngineID.init(rawValue:)) ?? .fast
@@ -52,6 +58,7 @@ final class DictationSettings {
         silenceThreshold = defaults.object(forKey: Key.silenceThreshold) as? Float ?? 0.015
         let preferred = Locale.preferredLanguages.first.map { String($0.prefix(2)) } ?? "fr"
         language = defaults.string(forKey: Key.language) ?? (preferred == "en" ? "en" : "fr")
+        keyboardLayout = KeyboardPreferences.shared.layout
     }
 
     var silenceConfiguration: SilenceDetector.Configuration {

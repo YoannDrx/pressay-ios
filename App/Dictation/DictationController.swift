@@ -86,7 +86,7 @@ final class DictationController {
             Task { await self?.stop(reason: interruption == .interrupted ? .interruption : .routeLost) }
         }
         DarwinNotifier.observe(PressaySignal.keyboardRequestsToggle) {
-            Task { @MainActor in await DictationController.shared.toggle(source: .keyboard) }
+            Task { @MainActor in await DictationController.shared.keyboardRequestedToggle() }
         }
         // Listed before any new capture can start: every file present now is an orphan.
         let orphans = captures?.captures() ?? []
@@ -147,6 +147,10 @@ final class DictationController {
             guard await AVAudioApplication.requestRecordPermission() else {
                 return captureFailed(.microphoneDenied)
             }
+        } else {
+            // The microphone's audio session keeps the app running in the background; a file
+            // has none, so the simulator would suspend the app mid-capture without this.
+            background.begin()
         }
         // Stopped while the permission prompt was up.
         guard machine.phase == .recording else { return }
@@ -335,6 +339,22 @@ final class DictationController {
         #else
         nil
         #endif
+    }
+}
+
+extension DictationController {
+    /// The keyboard's microphone button. iOS delivers the signal to a suspended app only when
+    /// it resumes it, maybe much later: a request older than a couple of seconds is dropped
+    /// rather than starting a dictation nobody is waiting for.
+    private func keyboardRequestedToggle() async {
+        let fresh = session?.takeToggleRequest() ?? false
+        PressayLog.shared.event("keyboard.toggle.received", [
+            "fresh": .bool(fresh),
+            "phase": .tag(machine.phase.rawValue),
+            "appState": .tag(BackgroundActivity.applicationStateTag),
+        ])
+        guard fresh else { return }
+        await toggle(source: .keyboard)
     }
 }
 
