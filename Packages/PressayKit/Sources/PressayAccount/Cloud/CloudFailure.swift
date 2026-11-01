@@ -24,7 +24,6 @@ public struct CloudFailure: Error, Equatable, Sendable {
     public static let deviceRevoked = CloudFailure("device_revoked")
     public static let accountNotActive = CloudFailure("account_not_active")
     public static let appleSubscriptionActive = CloudFailure("apple_subscription_active")
-    public static let authCancelled = CloudFailure("cloud_auth_cancelled")
     public static let authDenied = CloudFailure("cloud_auth_denied")
     public static let authStateMismatch = CloudFailure("cloud_auth_state_mismatch")
     public static let authCallbackInvalid = CloudFailure("cloud_auth_callback_invalid")

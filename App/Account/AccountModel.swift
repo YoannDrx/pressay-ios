@@ -54,10 +54,9 @@ final class AccountModel {
         lastRefresh = Date()
         do {
             snapshot = try await service.refresh()
-        } catch let failure as CloudFailure {
-            snapshot = await service.cachedSnapshot()
-            self.failure = failure
         } catch {
+            // Runs when the app comes to the front, not from a tap: the service journals the code,
+            // and a stale alert must not wait for the next account screen.
             snapshot = await service.cachedSnapshot()
         }
     }

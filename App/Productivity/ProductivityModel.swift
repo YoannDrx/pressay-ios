@@ -35,7 +35,6 @@ final class ProductivityModel {
         ProLimits.canAddDictionaryEntry(count: document.dictionary.count, isPro: isPro)
     }
 
-    /// `heardAs` lists what the engine writes instead, separated by commas.
     func save(_ entry: DictionaryEntry) {
         change { document in
             if let index = document.dictionary.firstIndex(where: { $0.id == entry.id }) {
@@ -78,17 +77,17 @@ final class ProductivityModel {
         pendingSync = Task {
             try? await Task.sleep(for: .seconds(3))
             guard !Task.isCancelled else { return }
-            await runSyncIfReady(force: true)
+            await runSyncIfReady()
         }
     }
 
     func runSyncIfDue() async {
         if let lastSyncRun, Date().timeIntervalSince(lastSyncRun) < Self.syncInterval { return }
-        await runSyncIfReady(force: false)
+        await runSyncIfReady()
     }
 
     /// Only a Pro iPhone that already holds the key syncs: nothing is ever sent otherwise.
-    private func runSyncIfReady(force: Bool) async {
+    private func runSyncIfReady() async {
         guard AccountModel.shared.isConnected, AccountModel.shared.isPro else { return }
         do {
             guard try await sync.snapshot().status == .ready else { return }
