@@ -1,0 +1,16 @@
+# Encrypted sync on: `xcodegen generate --spec project.sync.yml`. For checking that the way back still
+# compiles, not for a release: see "Encrypted sync" in the README. It rewrites App/Info.plist.
+include:
+  - project.yml
+targets:
+  Pressay:
+    dependencies:
+      - package: PressayKit
+        product: PressaySync
+    settings:
+      base:
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited) PRESSAY_APP PRESSAY_SYNC
+    info:
+      path: App/Info.plist
+      properties:
+        ITSAppUsesNonExemptEncryption: true

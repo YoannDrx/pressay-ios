@@ -32,9 +32,21 @@ jobs:
       - name: Build for the simulator
         run: |
           xcodegen generate
-          xcodebuild build \
+          # Also compiles StoreTests, which need a simulator and a local server to run.
+          xcodebuild build-for-testing \
             -project Pressay.xcodeproj \
             -scheme Pressay \
             -destination 'generic/platform=iOS Simulator' \
             CODE_SIGNING_ALLOWED=NO \
             -quiet
+      - name: Build for release, and check it holds no encryption outside the OS
+        run: |
+          xcodebuild build \
+            -project Pressay.xcodeproj \
+            -scheme Pressay \
+            -configuration Release \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath .build-release \
+            CODE_SIGNING_ALLOWED=NO \
+            -quiet
+          scripts/check-no-sync.sh .build-release/Build/Products/Release-iphonesimulator/Pressay.app

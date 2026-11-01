@@ -1,3 +1,4 @@
+import PressayAccount
 import PressayCore
 import PressayShared
 import SwiftUI
@@ -20,6 +21,9 @@ struct HomeView: View {
                     if let entry = dictation.lastEntry {
                         LastDictationCard(entry: entry)
                     }
+                    if let fallback = dictation.lastModeFallback {
+                        ModeFallbackNote(fallback: fallback)
+                    }
                     Text("home.tagline")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
@@ -30,6 +34,29 @@ struct HomeView: View {
             }
             .background(Color(.systemGroupedBackground))
             .navigationTitle(Text(verbatim: "Pressay"))
+        }
+    }
+}
+
+/// The text went in as dictated: said quietly, since nothing was lost.
+private struct ModeFallbackNote: View {
+    let fallback: RewriteFallback
+
+    var body: some View {
+        Label(message, systemImage: "info.circle")
+            .font(.footnote)
+            .foregroundStyle(.secondary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .accessibilityIdentifier("modeFallback")
+    }
+
+    private var message: LocalizedStringKey {
+        switch fallback {
+        case .trialsExhausted: "home.fallback.trials"
+        case .rateLimited: "home.fallback.busy"
+        case .modelUnavailable: "home.fallback.unavailable"
+        case .timedOut: "home.fallback.slow"
+        case .refused, .failed, .emptyResult: "home.fallback.other"
         }
     }
 }

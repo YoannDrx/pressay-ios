@@ -3,6 +3,7 @@ included:
   - Shared
   - Widgets
   - Keyboard
+  - StoreTests
   - Packages/PressayKit/Sources
   - Packages/PressayKit/Tests
 excluded:

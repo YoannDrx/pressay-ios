@@ -1,4 +1,5 @@
 import Foundation
+import PressayAccount
 import PressayCore
 import PressayShared
 
@@ -18,14 +19,16 @@ extension DictationController {
                 let output = try await engines.transcribe(samples, preferring: settings.engine, language: settings.language)
                 let text = output.text.trimmingCharacters(in: .whitespacesAndNewlines)
                 if !text.isEmpty {
+                    let document = await AccountEnvironment.productivity.document()
+                    let isPro = await AccountEnvironment.account.cachedSnapshot().isPro
                     addToHistory(HistoryEntry(
-                        text: text,
+                        text: DictionaryApplier.apply(document.dictionary, to: text),
                         engine: output.engine,
                         createdAt: orphan.createdAt,
                         audioSeconds: orphan.seconds,
                         transcriptionSeconds: output.seconds,
                         recovered: true
-                    ))
+                    ), isPro: isPro)
                 }
                 captures.remove(id: orphan.id)
                 PressayLog.shared.event("recovery.done", [

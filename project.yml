@@ -38,6 +38,10 @@ targets:
         product: PressayShared
       - package: PressayKit
         product: PressayCore
+      # Account, Pro rights, dictionary and AI modes: never linked by an extension.
+      # PressaySync is left out on purpose: see project.sync.yml and the README.
+      - package: PressayKit
+        product: PressayAccount
       - package: FluidAudio
     entitlements:
       path: App/Pressay.entitlements
@@ -132,6 +136,23 @@ targets:
             PrimaryLanguage: fr-FR
             IsASCIICapable: false
             PrefersRightToLeft: false
+  # Runs inside the app, for StoreKit's local test session (see StoreTests/).
+  PressayStoreTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - StoreTests
+      - path: StoreKit/Pressay.storekit
+        buildPhase: resources
+    dependencies:
+      - target: Pressay
+      - package: PressayKit
+        product: PressayAccount
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: fr.yodev.pressay.storetests
+        TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: YES
 schemes:
   Pressay:
     build:
@@ -139,5 +160,11 @@ schemes:
         Pressay: all
     run:
       config: Debug
+      # Prices in a debug run come from this local file, never from the code.
+      storeKitConfiguration: StoreKit/Pressay.storekit
+    test:
+      config: Debug
+      targets:
+        - PressayStoreTests
     archive:
       config: Release

@@ -4,7 +4,9 @@
 Resources/Localizable.xcstrings, shared by every target, has two sources:
 - Translations/reused-keys.json maps iOS keys to keys of the desktop app's
   src/i18n/locales/{en,fr}/translation.json, so shared wording stays identical;
-- Translations/ios-strings.json holds the iPhone-only strings.
+- Translations/ios-strings.json holds the iPhone-only strings;
+- Translations/sync-strings.json holds the strings of encrypted sync, which is left out of
+  shipped builds: they join the catalog only with --with-sync.
 
 Two more catalogs belong to the app target only:
 - App/InfoPlist.xcstrings, from Translations/infoplist-strings.json (permission prompts);
@@ -13,6 +15,7 @@ Two more catalogs belong to the app target only:
 
 Usage:
   scripts/build-string-catalog.py            regenerate the catalog
+  scripts/build-string-catalog.py --with-sync   regenerate it with the sync strings
   scripts/build-string-catalog.py --check    fail if a key misses a language, if
                                              placeholders differ between languages, or
                                              if the committed catalog is out of date
@@ -32,6 +35,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CATALOG = ROOT / "Resources" / "Localizable.xcstrings"
 REUSED = ROOT / "Translations" / "reused-keys.json"
 IOS_ONLY = ROOT / "Translations" / "ios-strings.json"
+SYNC_ONLY = ROOT / "Translations" / "sync-strings.json"
 # Catalogs built from one iPhone-only source each: (catalog, source).
 STANDALONE = (
     (ROOT / "App" / "InfoPlist.xcstrings", ROOT / "Translations" / "infoplist-strings.json"),
@@ -76,7 +80,7 @@ def desktop_dir() -> Path:
     return Path(os.environ.get("PRESSAY_DESKTOP_DIR", ROOT.parent / "Pressay"))
 
 
-def collect_strings(errors: list[str]) -> dict[str, dict[str, str]]:
+def collect_strings(errors: list[str], with_sync: bool = False) -> dict[str, dict[str, str]]:
     strings: dict[str, dict[str, str]] = {}
     locales = desktop_dir() / "src" / "i18n" / "locales"
     desktop = {lang: load_json(locales / lang / "translation.json") for lang in LANGUAGES}
@@ -90,11 +94,12 @@ def collect_strings(errors: list[str]) -> dict[str, dict[str, str]]:
                 continue
             strings[ios_key][lang] = to_format_string(value)
 
-    for key, values in load_json(IOS_ONLY).items():
-        if key in strings:
-            errors.append(f"{key}: defined in both reused-keys.json and ios-strings.json")
-            continue
-        strings[key] = {lang: values[lang] for lang in LANGUAGES if values.get(lang)}
+    for source in (IOS_ONLY, SYNC_ONLY) if with_sync else (IOS_ONLY,):
+        for key, values in load_json(source).items():
+            if key in strings:
+                errors.append(f"{key}: defined twice, the last time in {source.name}")
+                continue
+            strings[key] = {lang: values[lang] for lang in LANGUAGES if values.get(lang)}
 
     return strings
 
@@ -148,6 +153,7 @@ def validate(strings: dict[str, dict[str, str]], errors: list[str]) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--check", action="store_true")
+    parser.add_argument("--with-sync", action="store_true")
     args = parser.parse_args()
     errors: list[str] = []
     has_desktop = (desktop_dir() / "src" / "i18n" / "locales").is_dir()
@@ -176,15 +182,18 @@ def main() -> int:
         else:
             validate(strings_from_catalog(committed), errors)
             if has_desktop:
-                if render(collect_strings(errors)) != committed:
+                if render(collect_strings(errors, args.with_sync)) != committed:
                     errors.append("the catalog is out of date: run scripts/build-string-catalog.py")
+                # Kept valid even while it stays out of the catalog.
+                validate(collect_standalone(SYNC_ONLY), errors)
+                collect_strings(errors, with_sync=True)
             else:
                 print(f"note: {desktop_dir()} not found, freshness not checked")
     else:
         if not has_desktop:
             print(f"error: desktop repository not found at {desktop_dir()}", file=sys.stderr)
             return 1
-        strings = collect_strings(errors)
+        strings = collect_strings(errors, args.with_sync)
         validate(strings, errors)
         if not errors:
             CATALOG.parent.mkdir(parents=True, exist_ok=True)

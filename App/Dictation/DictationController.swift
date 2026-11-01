@@ -1,6 +1,7 @@
 import AVFoundation
 import Foundation
 import Observation
+import PressayAccount
 import PressayCore
 import PressayShared
 
@@ -59,6 +60,8 @@ final class DictationController {
     private(set) var recordingStartedAt: Date?
     /// Newest first. Set by `DictationController+History`.
     var history: [HistoryEntry] = []
+    /// Why the last dictation came out as dictated rather than through its mode.
+    var lastModeFallback: RewriteFallback?
 
     let settings = DictationSettings()
     let models: ModelLibrary
@@ -258,13 +261,16 @@ final class DictationController {
             guard !text.isEmpty else {
                 return transcriptionFailed(.nothingRecognized, captureID: captureID)
             }
+            let finished = await finishText(text)
             let entry = HistoryEntry(
-                text: text,
+                text: finished.text,
                 engine: output.engine,
                 audioSeconds: audioSeconds,
-                transcriptionSeconds: output.seconds
+                transcriptionSeconds: output.seconds,
+                originalText: finished.original,
+                modeID: finished.modeID
             )
-            addToHistory(entry)
+            addToHistory(entry, isPro: finished.isPro)
             try publish(entry)
             captures.remove(id: captureID)
             machine.handle(.delivered)
@@ -275,7 +281,7 @@ final class DictationController {
                 "engine": .tag(output.engine.rawValue),
                 "audioSeconds": .double(audioSeconds),
                 "inferenceSeconds": .double(output.seconds),
-                "characters": .int(text.count),
+                "characters": .int(finished.text.count),
                 "appState": .tag(BackgroundActivity.applicationStateTag),
             ])
         } catch let error as TranscriberError where error == .noEngine {

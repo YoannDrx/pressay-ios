@@ -1,17 +1,57 @@
+import PressayAccount
 import PressayCore
 import PressayShared
 import SwiftUI
 
-/// Engine, language, stop on silence, sounds, haptics, keyboard layout, the setup guide and
-/// the support journal.
+/// The account and Pro, personalization, engine, language, stop on silence, sounds, haptics,
+/// keyboard layout, the setup guide and the support journal.
 struct SettingsView: View {
     @Environment(DictationController.self) private var dictation
     @Environment(SetupGuideModel.self) private var guide
+    @Environment(AccountModel.self) private var account
 
     var body: some View {
         @Bindable var settings = dictation.settings
         NavigationStack {
             Form {
+                Section {
+                    NavigationLink {
+                        ProView()
+                    } label: {
+                        LabeledContent {
+                            Text(account.isPro ? "pro.status.active" : "pro.status.free")
+                        } label: {
+                            Label("pro.title", systemImage: "sparkles")
+                        }
+                    }
+                    .accessibilityIdentifier("proSettings")
+                    NavigationLink {
+                        AccountView()
+                    } label: {
+                        Label("account.title", systemImage: "person.crop.circle")
+                    }
+                    .accessibilityIdentifier("accountSettings")
+                } footer: {
+                    if account.snapshot.connection == .signedOut {
+                        Text("settings.account.footer")
+                    }
+                }
+
+                Section("settings.personalization") {
+                    NavigationLink {
+                        ModesView()
+                    } label: {
+                        Label("modes.title", systemImage: "wand.and.sparkles")
+                    }
+                    .accessibilityIdentifier("modesSettings")
+                    NavigationLink {
+                        DictionaryView()
+                    } label: {
+                        Label("dictionary.title", systemImage: "character.book.closed")
+                    }
+                    .accessibilityIdentifier("dictionarySettings")
+                }
+
                 Section("settings.dictation") {
                     NavigationLink {
                         EngineSettings()

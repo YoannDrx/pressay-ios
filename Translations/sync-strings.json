@@ -1,0 +1,98 @@
+{
+  "dictionary.footer.pro.sync": {
+    "en": "Your dictionary stays encrypted, and syncs with your Mac if you turn on sync.",
+    "fr": "Votre dictionnaire reste chiffré, et se synchronise avec votre Mac si vous activez la synchro."
+  },
+  "modes.custom": {
+    "en": "From your Mac",
+    "fr": "Depuis votre Mac"
+  },
+  "pro.feature.sync": {
+    "en": "End-to-end encrypted sync with your Mac",
+    "fr": "Synchro chiffrée de bout en bout avec votre Mac"
+  },
+  "sync.approve": {
+    "en": "Approve",
+    "fr": "Approuver"
+  },
+  "sync.conflicts": {
+    "en": "Some items changed on two devices. Both versions were kept.",
+    "fr": "Certains éléments ont changé sur deux appareils : les deux versions ont été conservées."
+  },
+  "sync.enable": {
+    "en": "Turn on sync",
+    "fr": "Activer la synchro"
+  },
+  "sync.enable.footer": {
+    "en": "If another device already syncs, it will have to approve this iPhone, or you can use your recovery code.",
+    "fr": "Si un autre appareil synchronise déjà, il devra approuver cet iPhone. Vous pouvez aussi utiliser votre code de récupération."
+  },
+  "sync.error.notApproved": {
+    "en": "This device is not approved for sync yet, or your account does not include Pro.",
+    "fr": "Cet appareil n’est pas encore approuvé pour la synchro, ou votre compte n’inclut pas Pro."
+  },
+  "sync.error.recoveryCode": {
+    "en": "This recovery code is not valid.",
+    "fr": "Ce code de récupération n’est pas valide."
+  },
+  "sync.explanation": {
+    "en": "Your dictionary, modes and active mode stay the same on your Mac and your iPhone. They are encrypted on your devices, so the server cannot read them. Audio, history and dictated text are never synced.",
+    "fr": "Votre dictionnaire, vos modes et votre mode actif restent les mêmes sur votre Mac et votre iPhone. Ils sont chiffrés sur vos appareils : le serveur ne peut pas les lire. La voix, l’historique et les textes dictés ne sont jamais synchronisés."
+  },
+  "sync.now": {
+    "en": "Sync now",
+    "fr": "Synchroniser maintenant"
+  },
+  "sync.pending": {
+    "en": "Waiting for approval: open Pressay on a device that already syncs and approve this iPhone.",
+    "fr": "En attente d’approbation : ouvrez Pressay sur un appareil qui synchronise déjà et approuvez cet iPhone."
+  },
+  "sync.pendingDevices": {
+    "en": "Waiting for approval",
+    "fr": "En attente d’approbation"
+  },
+  "sync.ready": {
+    "en": "Sync is on",
+    "fr": "La synchro est activée"
+  },
+  "sync.recovery.create": {
+    "en": "Create a recovery code",
+    "fr": "Créer un code de récupération"
+  },
+  "sync.recovery.create.footer": {
+    "en": "It lets a new device join sync without an approved device nearby. A new code replaces the previous one.",
+    "fr": "Il permet à un nouvel appareil de rejoindre la synchro sans appareil approuvé à portée. Un nouveau code remplace le précédent."
+  },
+  "sync.recovery.footer": {
+    "en": "The code you created on an approved device. It is checked on this iPhone.",
+    "fr": "Le code créé sur un appareil approuvé. Il est vérifié sur cet iPhone."
+  },
+  "sync.recovery.placeholder": {
+    "en": "PRS1…",
+    "fr": "PRS1…"
+  },
+  "sync.recovery.title": {
+    "en": "Recovery code",
+    "fr": "Code de récupération"
+  },
+  "sync.recovery.use": {
+    "en": "Use this code",
+    "fr": "Utiliser ce code"
+  },
+  "sync.recovery.warning": {
+    "en": "This code is shown only once. Keep it somewhere safe: anyone who has it can read your synced data. If you copy it, remove it from the clipboard afterwards.",
+    "fr": "Ce code n’est affiché qu’une fois. Conservez-le en lieu sûr : quiconque le détient peut lire vos données synchronisées. Si vous le copiez, retirez-le ensuite du presse-papiers."
+  },
+  "sync.report": {
+    "en": "Last sync: %1$lld sent, %2$lld received.",
+    "fr": "Dernière synchro : %1$lld envoyés, %2$lld reçus."
+  },
+  "sync.requiresPro": {
+    "en": "Encrypted sync comes with Pressay Pro.",
+    "fr": "La synchro chiffrée est incluse dans Pressay Pro."
+  },
+  "sync.title": {
+    "en": "Encrypted sync",
+    "fr": "Synchro chiffrée"
+  }
+}

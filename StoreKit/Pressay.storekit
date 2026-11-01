@@ -1,0 +1,93 @@
+{
+  "identifier" : "4B2E80A9-9EE0-47BA-8FD5-2FF5D6830D11",
+  "nonRenewingSubscriptions" : [],
+  "products" : [],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_locale" : "fr_FR",
+    "_renewalBillingIssuesEnabled" : false,
+    "_storefront" : "FRA",
+    "_storeKitErrors" : [],
+    "_timeRate" : 0
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "96523014",
+      "localizations" : [
+        {
+          "description" : "Commandes vocales avancées, modes personnalisés, BYOK, Cloud et synchronisation chiffrée.",
+          "displayName" : "Pressay Pro",
+          "locale" : "fr_FR"
+        },
+        {
+          "description" : "Advanced voice commands, custom modes, BYOK, Cloud and encrypted sync.",
+          "displayName" : "Pressay Pro",
+          "locale" : "en_US"
+        }
+      ],
+      "name" : "Pressay Pro",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [],
+          "codeOffers" : [],
+          "displayPrice" : "7.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "8F2D5D62-1AA3-4CC1-91FA-4EB4E89E23A2",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Toutes les fonctions Pro, facturées chaque mois. Résiliable à tout moment.",
+              "displayName" : "Pressay Pro mensuel",
+              "locale" : "fr_FR"
+            },
+            {
+              "description" : "All Pro features, billed monthly. Cancel anytime.",
+              "displayName" : "Pressay Pro monthly",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "app.pressay.desktop.mas.pro.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Pressay Pro Monthly",
+          "subscriptionGroupID" : "96523014",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [],
+          "codeOffers" : [],
+          "displayPrice" : "69.00",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "0D9B08B8-15BB-4563-A538-EA815A14BA5C",
+          "introductoryOffer" : {
+            "internalID" : "3C2E1C5A-7B44-4E11-9C7E-2D7A9B6E1F10",
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P1W"
+          },
+          "localizations" : [
+            {
+              "description" : "Toutes les fonctions Pro avec environ 28 % d’économie par rapport au mensuel.",
+              "displayName" : "Pressay Pro annuel",
+              "locale" : "fr_FR"
+            },
+            {
+              "description" : "All Pro features with approximately 28% savings compared with monthly billing.",
+              "displayName" : "Pressay Pro annual",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "app.pressay.desktop.mas.pro.annual",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Pressay Pro Annual",
+          "subscriptionGroupID" : "96523014",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

@@ -12,6 +12,10 @@ public struct HistoryEntry: Codable, Sendable, Equatable, Identifiable {
     public let transcriptionSeconds: Double
     /// Transcribed at a later launch from a capture the system interrupted.
     public let recovered: Bool
+    /// The dictation before an AI mode rewrote it into `text`.
+    public let originalText: String?
+    /// The AI mode that produced `text`.
+    public let modeID: String?
 
     public init(
         id: UUID = UUID(),
@@ -20,7 +24,9 @@ public struct HistoryEntry: Codable, Sendable, Equatable, Identifiable {
         createdAt: Date = Date(),
         audioSeconds: Double,
         transcriptionSeconds: Double,
-        recovered: Bool = false
+        recovered: Bool = false,
+        originalText: String? = nil,
+        modeID: String? = nil
     ) {
         self.id = id
         self.text = text
@@ -29,6 +35,8 @@ public struct HistoryEntry: Codable, Sendable, Equatable, Identifiable {
         self.audioSeconds = audioSeconds
         self.transcriptionSeconds = transcriptionSeconds
         self.recovered = recovered
+        self.originalText = originalText
+        self.modeID = modeID
     }
 
     public var result: DictationResult {
@@ -51,7 +59,9 @@ public struct HistoryEntry: Codable, Sendable, Equatable, Identifiable {
 /// container holds only ciphertext; and iOS Data Protection encrypts the file at rest until
 /// the first unlock after a restart.
 public struct DictationHistory: Sendable {
-    public static let capacity = 200
+    /// Without Pro, the oldest entries past this count are dropped. Far above what Free shows
+    /// (`visibleEntries`): a subscription that lapses hides a long history rather than cutting it.
+    public static let freeCapacity = 5_000
 
     public let fileURL: URL
     private let key: SymmetricKey
@@ -89,12 +99,13 @@ public struct DictationHistory: Sendable {
         return Self.legacyEntries(data) == nil
     }
 
-    public func add(_ entry: HistoryEntry) throws {
+    /// `capacity` nil keeps everything: the unlimited history of Pro.
+    public func add(_ entry: HistoryEntry, capacity: Int? = Self.freeCapacity) throws {
         var items = try entries()
         items.insert(entry, at: 0)
         items.sort { $0.createdAt > $1.createdAt }
-        if items.count > Self.capacity {
-            items.removeLast(items.count - Self.capacity)
+        if let capacity, items.count > capacity {
+            items.removeLast(items.count - capacity)
         }
         try write(items)
     }

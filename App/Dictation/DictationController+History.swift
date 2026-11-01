@@ -34,10 +34,11 @@ extension DictationController {
         models.state != .installed && !AppleSpeechTranscriber.isAvailable
     }
 
-    func addToHistory(_ entry: HistoryEntry) {
+    /// Pro keeps everything; Free keeps a wide margin and shows the last days.
+    func addToHistory(_ entry: HistoryEntry, isPro: Bool) {
         do {
             guard let historyStore else { throw HistoryKey.Failure.unavailable(errSecInteractionNotAllowed) }
-            try historyStore.add(entry)
+            try historyStore.add(entry, capacity: isPro ? nil : DictationHistory.freeCapacity)
         } catch {
             PressayLog.shared.event("history.writeFailed", ["error": ErrorTag.of(error)])
         }
