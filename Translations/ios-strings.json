@@ -1,4 +1,156 @@
 {
+  "account.awaitingDevice": {
+    "en": "You are signed in, but this iPhone is not connected to your account yet.",
+    "fr": "Vous êtes connecté, mais cet iPhone n’est pas encore relié à votre compte."
+  },
+  "account.delete": {
+    "en": "Delete account",
+    "fr": "Supprimer le compte"
+  },
+  "account.delete.apple.anyway": {
+    "en": "Delete my account anyway",
+    "fr": "Supprimer quand même mon compte"
+  },
+  "account.delete.apple.body": {
+    "en": "Deleting your account does not cancel it: Apple keeps billing until you cancel it in your Apple Account. You can cancel it first, or delete your account anyway.",
+    "fr": "Supprimer votre compte ne le résilie pas : Apple continue de facturer tant que vous ne le résiliez pas depuis votre compte Apple. Vous pouvez d’abord le résilier, ou supprimer quand même votre compte."
+  },
+  "account.delete.apple.manage": {
+    "en": "Manage my subscription",
+    "fr": "Gérer mon abonnement"
+  },
+  "account.delete.apple.title": {
+    "en": "Your App Store subscription is still active",
+    "fr": "Votre abonnement App Store est toujours actif"
+  },
+  "account.delete.confirm.action": {
+    "en": "Delete my account",
+    "fr": "Supprimer mon compte"
+  },
+  "account.delete.confirm.body": {
+    "en": "This cannot be undone. Your account, its devices and your encrypted sync data will be deleted.",
+    "fr": "C’est définitif. Votre compte, ses appareils et vos données de synchro chiffrées seront supprimés."
+  },
+  "account.delete.confirm.title": {
+    "en": "Delete your Pressay account?",
+    "fr": "Supprimer votre compte Pressay ?"
+  },
+  "account.delete.done": {
+    "en": "Your account deletion has been requested. This iPhone is signed out.",
+    "fr": "La suppression de votre compte est demandée. Cet iPhone est déconnecté."
+  },
+  "account.delete.footer": {
+    "en": "Deletes your account, its devices and your encrypted sync data. Your dictations stay on this iPhone, and the app keeps working without an account.",
+    "fr": "Supprime votre compte, ses appareils et vos données de synchro chiffrées. Vos dictées restent sur cet iPhone et l’app continue de fonctionner sans compte."
+  },
+  "account.deviceLimit.body": {
+    "en": "Pro works on three devices. Remove one to use it on this iPhone. Everything free keeps working in the meantime.",
+    "fr": "Pro fonctionne sur trois appareils. Retirez-en un pour l’utiliser sur cet iPhone. Tout ce qui est gratuit continue de fonctionner en attendant."
+  },
+  "account.deviceLimit.title": {
+    "en": "Three devices already use this account",
+    "fr": "Trois appareils utilisent déjà ce compte"
+  },
+  "account.deviceRevoked.body": {
+    "en": "Pro is off on this iPhone until you bring it back, within your three devices. Everything free keeps working.",
+    "fr": "Pro est désactivé sur cet iPhone tant que vous ne l’avez pas rétabli, dans la limite de vos trois appareils. Tout ce qui est gratuit continue de fonctionner."
+  },
+  "account.deviceRevoked.restore": {
+    "en": "Bring this iPhone back",
+    "fr": "Rétablir cet iPhone"
+  },
+  "account.deviceRevoked.title": {
+    "en": "This iPhone was removed from your account",
+    "fr": "Cet iPhone a été retiré de votre compte"
+  },
+  "account.devices": {
+    "en": "Devices",
+    "fr": "Appareils"
+  },
+  "account.devices.current": {
+    "en": "This iPhone",
+    "fr": "Cet iPhone"
+  },
+  "account.devices.empty": {
+    "en": "Loading devices…",
+    "fr": "Chargement des appareils…"
+  },
+  "account.devices.footer": {
+    "en": "Your account works on up to three devices, Mac and iPhone included.",
+    "fr": "Votre compte fonctionne sur trois appareils au maximum, Mac et iPhone compris."
+  },
+  "account.devices.remove": {
+    "en": "Remove",
+    "fr": "Retirer"
+  },
+  "account.devices.remove.confirm": {
+    "en": "Remove this device from your account? It will no longer be able to use your account until you bring it back.",
+    "fr": "Retirer cet appareil de votre compte ? Il ne pourra plus l’utiliser tant que vous ne l’aurez pas rétabli."
+  },
+  "account.email": {
+    "en": "Email",
+    "fr": "E-mail"
+  },
+  "account.error.accountInactive": {
+    "en": "This account is no longer active.",
+    "fr": "Ce compte n’est plus actif."
+  },
+  "account.error.generic": {
+    "en": "That did not work. Please try again in a moment.",
+    "fr": "Cela n’a pas fonctionné. Veuillez réessayer dans un instant."
+  },
+  "account.error.keychain": {
+    "en": "Pressay cannot read its secure storage yet. Unlock your iPhone and try again.",
+    "fr": "Pressay ne peut pas encore lire son stockage sécurisé. Déverrouillez votre iPhone et réessayez."
+  },
+  "account.error.network": {
+    "en": "Pressay Cloud cannot be reached. Check your connection and try again.",
+    "fr": "Pressay Cloud est injoignable. Vérifiez votre connexion et réessayez."
+  },
+  "account.error.signIn": {
+    "en": "The sign-in did not finish. Please try again.",
+    "fr": "La connexion n’a pas abouti. Veuillez réessayer."
+  },
+  "account.error.title": {
+    "en": "Something went wrong",
+    "fr": "Un problème est survenu"
+  },
+  "account.retry": {
+    "en": "Try again",
+    "fr": "Réessayer"
+  },
+  "account.sessionExpired": {
+    "en": "Your session has ended. Sign in again to keep Pro on this iPhone.",
+    "fr": "Votre session a pris fin. Reconnectez-vous pour garder Pro sur cet iPhone."
+  },
+  "account.signIn.apple": {
+    "en": "Continue with Apple",
+    "fr": "Continuer avec Apple"
+  },
+  "account.signIn.footer": {
+    "en": "An account is optional. It carries Pro between your Mac and your iPhone. Dictation, the keyboard and the Action button work without one, and your audio and text never leave this iPhone.",
+    "fr": "Le compte est facultatif. Il sert à retrouver Pro entre votre Mac et votre iPhone. La dictée, le clavier et le bouton Action fonctionnent sans lui, et votre voix et vos textes ne quittent jamais cet iPhone."
+  },
+  "account.signIn.google": {
+    "en": "Continue with Google",
+    "fr": "Continuer avec Google"
+  },
+  "account.signIn.other": {
+    "en": "Other options",
+    "fr": "Autres options"
+  },
+  "account.signIn.title": {
+    "en": "Sign in to Pressay",
+    "fr": "Se connecter à Pressay"
+  },
+  "account.signOut": {
+    "en": "Sign out",
+    "fr": "Se déconnecter"
+  },
+  "account.title": {
+    "en": "Account",
+    "fr": "Compte"
+  },
   "activity.delivered": {
     "en": "Text ready for the Pressay keyboard",
     "fr": "Texte prêt pour le clavier Pressay"
@@ -23,6 +175,22 @@
     "en": "Transcribing…",
     "fr": "Transcription…"
   },
+  "common.cancel": {
+    "en": "Cancel",
+    "fr": "Annuler"
+  },
+  "common.done": {
+    "en": "Done",
+    "fr": "Terminé"
+  },
+  "common.ok": {
+    "en": "OK",
+    "fr": "OK"
+  },
+  "common.save": {
+    "en": "Save",
+    "fr": "Enregistrer"
+  },
   "control.dictate.description": {
     "en": "Starts or stops a dictation without opening Pressay.",
     "fr": "Démarre ou arrête une dictée sans ouvrir Pressay."
@@ -30,6 +198,54 @@
   "control.dictate.title": {
     "en": "Dictate",
     "fr": "Dicter"
+  },
+  "dictionary.add": {
+    "en": "Add a word",
+    "fr": "Ajouter un mot"
+  },
+  "dictionary.edit": {
+    "en": "Edit word",
+    "fr": "Modifier le mot"
+  },
+  "dictionary.empty": {
+    "en": "Add the names and words dictation gets wrong.",
+    "fr": "Ajoutez les noms et les mots que la dictée écrit mal."
+  },
+  "dictionary.enabled": {
+    "en": "Use this word",
+    "fr": "Utiliser ce mot"
+  },
+  "dictionary.footer.free": {
+    "en": "%1$lld of %2$lld words. Your dictionary stays on this iPhone.",
+    "fr": "%1$lld mots sur %2$lld. Votre dictionnaire reste sur cet iPhone."
+  },
+  "dictionary.footer.pro": {
+    "en": "Your dictionary stays encrypted, and syncs with your Mac if you turn on sync.",
+    "fr": "Votre dictionnaire reste chiffré, et se synchronise avec votre Mac si vous activez la synchro."
+  },
+  "dictionary.heardAs": {
+    "en": "Often written as",
+    "fr": "Souvent écrit"
+  },
+  "dictionary.heardAs.footer": {
+    "en": "What dictation writes instead. Separate several with commas.",
+    "fr": "Ce que la dictée écrit à la place. Séparez-en plusieurs par des virgules."
+  },
+  "dictionary.limit": {
+    "en": "You have reached the limit of the free dictionary. Your words keep working; Pro lets you add more.",
+    "fr": "Vous avez atteint la limite du dictionnaire gratuit. Vos mots continuent de fonctionner ; Pro permet d’en ajouter d’autres."
+  },
+  "dictionary.term": {
+    "en": "Word, as it should be written",
+    "fr": "Mot, tel qu’il doit s’écrire"
+  },
+  "dictionary.term.footer": {
+    "en": "For example your name, a brand or a technical term.",
+    "fr": "Par exemple votre nom, une marque ou un terme technique."
+  },
+  "dictionary.title": {
+    "en": "Dictionary",
+    "fr": "Dictionnaire"
   },
   "engine.apple": {
     "en": "Apple",
@@ -75,9 +291,21 @@
     "en": "Delete every dictation from this iPhone?",
     "fr": "Supprimer toutes les dictées de cet iPhone ?"
   },
+  "history.copyOriginal": {
+    "en": "Copy as dictated",
+    "fr": "Copier le texte dicté"
+  },
   "history.empty": {
     "en": "No dictation yet.",
     "fr": "Aucune dictée pour l’instant."
+  },
+  "history.limit": {
+    "en": "Last %lld days shown. See everything and search with Pro.",
+    "fr": "%lld derniers jours affichés. Tout voir et rechercher avec Pro."
+  },
+  "history.limit.hidden": {
+    "en": "Last %1$lld days shown. Kept encrypted on this iPhone beyond that: %2$lld. See everything and search with Pro.",
+    "fr": "%1$lld derniers jours affichés. Gardées chiffrées sur cet iPhone au-delà : %2$lld. Tout voir et rechercher avec Pro."
   },
   "history.privacy": {
     "en": "Your dictations stay on this iPhone, encrypted.",
@@ -102,6 +330,26 @@
   "home.dictate.hint": {
     "en": "Starts a dictation. The text goes to the history and to the Pressay keyboard.",
     "fr": "Démarre une dictée. Le texte va dans l’historique et au clavier Pressay."
+  },
+  "home.fallback.busy": {
+    "en": "Inserted as dictated: the on-device model is busy right now.",
+    "fr": "Inséré tel que dicté : le modèle de l’iPhone est occupé pour le moment."
+  },
+  "home.fallback.other": {
+    "en": "Inserted as dictated: the mode could not rewrite this text.",
+    "fr": "Inséré tel que dicté : le mode n’a pas pu réécrire ce texte."
+  },
+  "home.fallback.slow": {
+    "en": "Inserted as dictated: the on-device model took too long.",
+    "fr": "Inséré tel que dicté : le modèle de l’iPhone a mis trop de temps."
+  },
+  "home.fallback.trials": {
+    "en": "Inserted as dictated: your free AI trials are used up.",
+    "fr": "Inséré tel que dicté : vos essais IA gratuits sont épuisés."
+  },
+  "home.fallback.unavailable": {
+    "en": "Inserted as dictated: the on-device model is not available.",
+    "fr": "Inséré tel que dicté : le modèle de l’iPhone n’est pas disponible."
   },
   "home.lastDictation": {
     "en": "Last dictation",
@@ -335,6 +583,102 @@
     "en": "French",
     "fr": "Français"
   },
+  "mode.ai_prompt.description": {
+    "en": "Turns it into a clear, structured instruction.",
+    "fr": "Transforme la dictée en consigne claire et structurée."
+  },
+  "mode.ai_prompt.name": {
+    "en": "AI prompt",
+    "fr": "Prompt IA"
+  },
+  "mode.clean.description": {
+    "en": "Removes hesitations, repetitions and artifacts.",
+    "fr": "Retire les hésitations, les répétitions et les artefacts."
+  },
+  "mode.clean.name": {
+    "en": "Clean",
+    "fr": "Propre"
+  },
+  "mode.commit.description": {
+    "en": "Writes a concise, conventional commit message.",
+    "fr": "Génère un message de commit concis et conventionnel."
+  },
+  "mode.commit.name": {
+    "en": "Commit",
+    "fr": "Commit"
+  },
+  "mode.email.description": {
+    "en": "Structures a professional email, ready to send.",
+    "fr": "Structure un e-mail professionnel prêt à envoyer."
+  },
+  "mode.email.name": {
+    "en": "Email",
+    "fr": "E-mail"
+  },
+  "mode.faithful.description": {
+    "en": "As dictated, with your dictionary.",
+    "fr": "Tel que dicté, avec votre dictionnaire."
+  },
+  "mode.faithful.name": {
+    "en": "Faithful",
+    "fr": "Fidèle"
+  },
+  "mode.meeting_notes.description": {
+    "en": "Structures key points, decisions and next steps.",
+    "fr": "Structure les décisions, les points clés et les prochaines étapes."
+  },
+  "mode.meeting_notes.name": {
+    "en": "Meeting notes",
+    "fr": "Compte rendu"
+  },
+  "mode.message.description": {
+    "en": "Rewords it as a short conversational message.",
+    "fr": "Reformule en message conversationnel court."
+  },
+  "mode.message.name": {
+    "en": "Message",
+    "fr": "Message"
+  },
+  "mode.note.description": {
+    "en": "Organizes it into a clear, lasting note.",
+    "fr": "Organise la dictée en note claire et durable."
+  },
+  "mode.note.name": {
+    "en": "Note",
+    "fr": "Note"
+  },
+  "mode.summary.description": {
+    "en": "Condenses it without losing what matters.",
+    "fr": "Condense la dictée sans perdre les informations importantes."
+  },
+  "mode.summary.name": {
+    "en": "Summary",
+    "fr": "Résumé"
+  },
+  "mode.tasks.description": {
+    "en": "Extracts a clear, checkable list of actions.",
+    "fr": "Extrait une liste d’actions claire et vérifiable."
+  },
+  "mode.tasks.name": {
+    "en": "Tasks",
+    "fr": "Tâches"
+  },
+  "mode.ticket.description": {
+    "en": "Produces an actionable ticket with context and criteria.",
+    "fr": "Produit un ticket actionnable avec contexte et critères."
+  },
+  "mode.ticket.name": {
+    "en": "Ticket",
+    "fr": "Ticket"
+  },
+  "mode.translation.description": {
+    "en": "Translates faithfully between French and English.",
+    "fr": "Traduit fidèlement entre le français et l’anglais."
+  },
+  "mode.translation.name": {
+    "en": "Translation",
+    "fr": "Traduction"
+  },
   "model.download": {
     "en": "Download",
     "fr": "Télécharger"
@@ -383,6 +727,222 @@
     "en": "Engine",
     "fr": "Moteur"
   },
+  "modes.available": {
+    "en": "The on-device model is ready.",
+    "fr": "Le modèle de l’iPhone est prêt."
+  },
+  "modes.custom": {
+    "en": "From your Mac",
+    "fr": "Depuis votre Mac"
+  },
+  "modes.footer": {
+    "en": "Modes run with Apple’s model, on your iPhone: nothing is sent. If the model cannot answer, the text is inserted as dictated.",
+    "fr": "Les modes utilisent le modèle d’Apple, sur votre iPhone : rien n’est envoyé. Si le modèle ne peut pas répondre, le texte est inséré tel que dicté."
+  },
+  "modes.title": {
+    "en": "AI modes",
+    "fr": "Modes IA"
+  },
+  "modes.trials": {
+    "en": "%lld free AI trials left.",
+    "fr": "Encore %lld essais IA gratuits."
+  },
+  "modes.trials.none": {
+    "en": "Your free AI trials are used up. Dictations are inserted as dictated.",
+    "fr": "Vos essais IA gratuits sont épuisés. Les dictées sont insérées telles que dictées."
+  },
+  "modes.unavailable.device": {
+    "en": "This iPhone does not support Apple Intelligence. Dictations are inserted as dictated.",
+    "fr": "Cet iPhone n’est pas compatible avec Apple Intelligence. Les dictées sont insérées telles que dictées."
+  },
+  "modes.unavailable.notReady": {
+    "en": "The on-device model is still downloading. Until it is ready, dictations are inserted as dictated.",
+    "fr": "Le modèle de l’iPhone est en cours de téléchargement. En attendant, les dictées sont insérées telles que dictées."
+  },
+  "modes.unavailable.off": {
+    "en": "Turn on Apple Intelligence in Settings to use modes. Until then, dictations are inserted as dictated.",
+    "fr": "Activez Apple Intelligence dans Réglages pour utiliser les modes. En attendant, les dictées sont insérées telles que dictées."
+  },
+  "modes.unavailable.other": {
+    "en": "The on-device model is not available. Dictations are inserted as dictated.",
+    "fr": "Le modèle de l’iPhone n’est pas disponible. Les dictées sont insérées telles que dictées."
+  },
+  "pro.discover": {
+    "en": "See Pressay Pro",
+    "fr": "Découvrir Pressay Pro"
+  },
+  "pro.error.otherAccount": {
+    "en": "This App Store purchase is linked to another Pressay account. Sign in to that account to use it.",
+    "fr": "Cet achat App Store est rattaché à un autre compte Pressay. Connectez-vous à ce compte pour l’utiliser."
+  },
+  "pro.error.otherAppleAccount": {
+    "en": "Another Apple Account's subscription is already linked to this Pressay account.",
+    "fr": "L’abonnement d’un autre compte Apple est déjà rattaché à ce compte Pressay."
+  },
+  "pro.error.purchase": {
+    "en": "The App Store could not complete this purchase. You were not charged.",
+    "fr": "L’App Store n’a pas pu finaliser cet achat. Vous n’avez pas été débité."
+  },
+  "pro.error.sandbox": {
+    "en": "This is a test purchase, and this account is not allowed to use test purchases. Pro was not activated and you were not charged.",
+    "fr": "Cet achat est un achat de test, et ce compte n’est pas autorisé à les utiliser. Pro n’a pas été activé et vous n’avez pas été débité."
+  },
+  "pro.error.unverified": {
+    "en": "Apple could not verify this purchase, so it was not used.",
+    "fr": "Apple n’a pas pu vérifier cet achat : il n’a pas été utilisé."
+  },
+  "pro.feature.devices": {
+    "en": "Mac and iPhone with one subscription, up to three devices",
+    "fr": "Mac et iPhone avec un seul abonnement, trois appareils au maximum"
+  },
+  "pro.feature.dictionary": {
+    "en": "Unlimited personal dictionary",
+    "fr": "Dictionnaire personnel illimité"
+  },
+  "pro.feature.free": {
+    "en": "Local dictation stays free and unlimited, with or without Pro.",
+    "fr": "La dictée locale reste gratuite et illimitée, avec ou sans Pro."
+  },
+  "pro.feature.history": {
+    "en": "Your whole history, with search",
+    "fr": "Tout votre historique, avec la recherche"
+  },
+  "pro.feature.modes": {
+    "en": "Unlimited AI modes, on your iPhone: email, note, summary, translation",
+    "fr": "Modes IA illimités, sur votre iPhone : e-mail, note, résumé, traduction"
+  },
+  "pro.feature.sync": {
+    "en": "End-to-end encrypted sync with your Mac",
+    "fr": "Synchro chiffrée de bout en bout avec votre Mac"
+  },
+  "pro.headline": {
+    "en": "Finished text, on all your devices",
+    "fr": "Un texte fini, sur tous vos appareils"
+  },
+  "pro.legal": {
+    "en": "Payment is charged to your Apple Account. The subscription renews automatically at the same price unless it is cancelled at least 24 hours before the end of the current period. Any free trial ends when you subscribe. Manage or cancel it in your Apple Account settings.",
+    "fr": "Le paiement est débité sur votre compte Apple. L’abonnement se renouvelle automatiquement au même prix, sauf résiliation au moins 24 heures avant la fin de la période en cours. Toute période d’essai gratuit prend fin à l’abonnement. Gérez-le ou résiliez-le dans les réglages de votre compte Apple."
+  },
+  "pro.link.body": {
+    "en": "This App Store subscription is not attached to the Pressay account you are signed in to. Link it only if it is yours: it will then give Pro to this account.",
+    "fr": "Cet abonnement App Store n’est pas rattaché au compte Pressay connecté. Ne le rattachez que s’il est bien à vous : il donnera alors Pro à ce compte."
+  },
+  "pro.link.confirm": {
+    "en": "Link to this account",
+    "fr": "Rattacher à ce compte"
+  },
+  "pro.link.title": {
+    "en": "Link this purchase to this account?",
+    "fr": "Rattacher cet achat à ce compte ?"
+  },
+  "pro.manage": {
+    "en": "Manage subscription",
+    "fr": "Gérer l’abonnement"
+  },
+  "pro.notice.awaitingConfirmation": {
+    "en": "Your purchase is safe. Pro turns on as soon as Pressay Cloud confirms it; nothing more to do.",
+    "fr": "Votre achat est bien enregistré. Pro s’activera dès que Pressay Cloud l’aura confirmé, sans rien de plus à faire."
+  },
+  "pro.notice.nothingToRestore": {
+    "en": "No Pressay Pro subscription was found on this Apple Account.",
+    "fr": "Aucun abonnement Pressay Pro trouvé sur ce compte Apple."
+  },
+  "pro.notice.pendingApproval": {
+    "en": "This purchase is waiting for approval. Pro turns on once it is approved.",
+    "fr": "Cet achat attend une approbation. Pro s’activera une fois l’achat approuvé."
+  },
+  "pro.notice.restored": {
+    "en": "Your purchases have been restored.",
+    "fr": "Vos achats ont été restaurés."
+  },
+  "pro.price.period": {
+    "en": "%1$@ / %2$@",
+    "fr": "%1$@ / %2$@"
+  },
+  "pro.privacy": {
+    "en": "Privacy Policy",
+    "fr": "Politique de confidentialité"
+  },
+  "pro.products.failed": {
+    "en": "The App Store is not answering. Your subscription options will appear once it does.",
+    "fr": "L’App Store ne répond pas. Les abonnements s’afficheront dès qu’il répondra."
+  },
+  "pro.restore": {
+    "en": "Restore purchases",
+    "fr": "Restaurer les achats"
+  },
+  "pro.signInFirst": {
+    "en": "Your subscription is attached to a Pressay account, so your Mac recognizes it too. You will sign in first.",
+    "fr": "Votre abonnement est rattaché à un compte Pressay pour que votre Mac le reconnaisse aussi. Vous vous connecterez d’abord."
+  },
+  "pro.source.account": {
+    "en": "Included with your Pressay account.",
+    "fr": "Inclus avec votre compte Pressay."
+  },
+  "pro.source.appStore": {
+    "en": "Subscribed through the App Store.",
+    "fr": "Abonnement souscrit sur l’App Store."
+  },
+  "pro.source.offered": {
+    "en": "Offered with your Pressay account.",
+    "fr": "Offert avec votre compte Pressay."
+  },
+  "pro.source.trial": {
+    "en": "Trial of your Pressay account.",
+    "fr": "Essai de votre compte Pressay."
+  },
+  "pro.status.active": {
+    "en": "Active",
+    "fr": "Actif"
+  },
+  "pro.status.endsOn": {
+    "en": "Ends on %@.",
+    "fr": "Prend fin le %@."
+  },
+  "pro.status.free": {
+    "en": "Free",
+    "fr": "Gratuit"
+  },
+  "pro.status.renewsOn": {
+    "en": "Renews on %@.",
+    "fr": "Se renouvelle le %@."
+  },
+  "pro.status.title": {
+    "en": "Pressay Pro is active",
+    "fr": "Pressay Pro est actif"
+  },
+  "pro.status.trial": {
+    "en": "You are in your free trial.",
+    "fr": "Vous êtes en période d’essai gratuit."
+  },
+  "pro.subheadline": {
+    "en": "One subscription for your Mac and your iPhone.",
+    "fr": "Un seul abonnement pour votre Mac et votre iPhone."
+  },
+  "pro.subscribe": {
+    "en": "Subscribe",
+    "fr": "S’abonner"
+  },
+  "pro.subscribe.trial": {
+    "en": "Start free trial",
+    "fr": "Commencer l’essai gratuit"
+  },
+  "pro.terms": {
+    "en": "Terms of Use",
+    "fr": "Conditions d’utilisation"
+  },
+  "pro.title": {
+    "en": "Pressay Pro",
+    "fr": "Pressay Pro"
+  },
+  "pro.trial.line": {
+    "en": "Free for %1$@, then %2$@ / %3$@",
+    "fr": "Gratuit pendant %1$@, puis %2$@ / %3$@"
+  },
+  "settings.account.footer": {
+    "en": "Optional. Everything free works without an account.",
+    "fr": "Facultatif. Tout ce qui est gratuit fonctionne sans compte."
+  },
   "settings.dictation": {
     "en": "Dictation",
     "fr": "Dictée"
@@ -430,6 +990,10 @@
   "settings.language": {
     "en": "Language",
     "fr": "Langue"
+  },
+  "settings.personalization": {
+    "en": "Personalization",
+    "fr": "Personnalisation"
   },
   "settings.silenceDelay": {
     "en": "Silence before stopping",
@@ -714,5 +1278,89 @@
   "shortcut.dictate.title": {
     "en": "Dictate",
     "fr": "Dicter"
+  },
+  "sync.approve": {
+    "en": "Approve",
+    "fr": "Approuver"
+  },
+  "sync.conflicts": {
+    "en": "Some items changed on two devices. Both versions were kept.",
+    "fr": "Certains éléments ont changé sur deux appareils : les deux versions ont été conservées."
+  },
+  "sync.enable": {
+    "en": "Turn on sync",
+    "fr": "Activer la synchro"
+  },
+  "sync.enable.footer": {
+    "en": "If another device already syncs, it will have to approve this iPhone, or you can use your recovery code.",
+    "fr": "Si un autre appareil synchronise déjà, il devra approuver cet iPhone. Vous pouvez aussi utiliser votre code de récupération."
+  },
+  "sync.error.notApproved": {
+    "en": "This device is not approved for sync yet, or your account does not include Pro.",
+    "fr": "Cet appareil n’est pas encore approuvé pour la synchro, ou votre compte n’inclut pas Pro."
+  },
+  "sync.error.recoveryCode": {
+    "en": "This recovery code is not valid.",
+    "fr": "Ce code de récupération n’est pas valide."
+  },
+  "sync.explanation": {
+    "en": "Your dictionary, modes and active mode stay the same on your Mac and your iPhone. They are encrypted on your devices, so the server cannot read them. Audio, history and dictated text are never synced.",
+    "fr": "Votre dictionnaire, vos modes et votre mode actif restent les mêmes sur votre Mac et votre iPhone. Ils sont chiffrés sur vos appareils : le serveur ne peut pas les lire. La voix, l’historique et les textes dictés ne sont jamais synchronisés."
+  },
+  "sync.now": {
+    "en": "Sync now",
+    "fr": "Synchroniser maintenant"
+  },
+  "sync.pending": {
+    "en": "Waiting for approval: open Pressay on a device that already syncs and approve this iPhone.",
+    "fr": "En attente d’approbation : ouvrez Pressay sur un appareil qui synchronise déjà et approuvez cet iPhone."
+  },
+  "sync.pendingDevices": {
+    "en": "Waiting for approval",
+    "fr": "En attente d’approbation"
+  },
+  "sync.ready": {
+    "en": "Sync is on",
+    "fr": "La synchro est activée"
+  },
+  "sync.recovery.create": {
+    "en": "Create a recovery code",
+    "fr": "Créer un code de récupération"
+  },
+  "sync.recovery.create.footer": {
+    "en": "It lets a new device join sync without an approved device nearby. A new code replaces the previous one.",
+    "fr": "Il permet à un nouvel appareil de rejoindre la synchro sans appareil approuvé à portée. Un nouveau code remplace le précédent."
+  },
+  "sync.recovery.footer": {
+    "en": "The code you created on an approved device. It is checked on this iPhone.",
+    "fr": "Le code créé sur un appareil approuvé. Il est vérifié sur cet iPhone."
+  },
+  "sync.recovery.placeholder": {
+    "en": "PRS1…",
+    "fr": "PRS1…"
+  },
+  "sync.recovery.title": {
+    "en": "Recovery code",
+    "fr": "Code de récupération"
+  },
+  "sync.recovery.use": {
+    "en": "Use this code",
+    "fr": "Utiliser ce code"
+  },
+  "sync.recovery.warning": {
+    "en": "This code is shown only once. Keep it somewhere safe: anyone who has it can read your synced data. If you copy it, remove it from the clipboard afterwards.",
+    "fr": "Ce code n’est affiché qu’une fois. Conservez-le en lieu sûr : quiconque le détient peut lire vos données synchronisées. Si vous le copiez, retirez-le ensuite du presse-papiers."
+  },
+  "sync.report": {
+    "en": "Last sync: %1$lld sent, %2$lld received.",
+    "fr": "Dernière synchro : %1$lld envoyés, %2$lld reçus."
+  },
+  "sync.requiresPro": {
+    "en": "Encrypted sync comes with Pressay Pro.",
+    "fr": "La synchro chiffrée est incluse dans Pressay Pro."
+  },
+  "sync.title": {
+    "en": "Encrypted sync",
+    "fr": "Synchro chiffrée"
   }
 }

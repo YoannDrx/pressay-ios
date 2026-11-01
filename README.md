@@ -15,7 +15,8 @@ desktop repository: `docs/IOS_LAUNCH_PLAN.md`.
 | `Keyboard/`             | The keyboard extension: typing, session state, insertion                 |
 | `Widgets/`              | The Control for the Action button, and the Live Activity                 |
 | `Shared/`               | Sources compiled into the app and the widget extension (App Intents)     |
-| `Packages/PressayKit/`  | `PressayShared` (App Group, result queue, signals, journal), `PressayCore` |
+| `Packages/PressayKit/`  | `PressayShared` (App Group, result queue, signals, journal), `PressayCore`, `PressayAccount` (account, Pro rights, sync, dictionary, modes) |
+| `StoreKit/`, `StoreTests/` | Local StoreKit configuration and the tests that use it. Not in the app |
 | `Resources/`            | `Localizable.xcstrings`, generated: do not edit by hand                  |
 | `App/*.xcstrings`       | `InfoPlist` and `AppShortcuts` catalogs, generated: do not edit by hand  |
 | `Translations/`         | Sources of the string catalog                                            |
@@ -60,6 +61,54 @@ sample (`keyboard.memory`, numbers only) every 15 s while visible.
 To try it in the simulator: Settings > General > Keyboard > Keyboards > Add New Keyboard >
 Pressay, then Allow Full Access. After reinstalling the app, quit the host app (Messages)
 so it loads the new keyboard.
+
+## Account and Pro
+
+Everything free works without an account and without the network: a signed-out user causes no
+request. `PressayAccount` is linked by the app alone, never by an extension.
+
+- **Sign-in:** `ASWebAuthenticationSession` with PKCE on the Pressay web issuer, the same public
+  client and `pressay://oauth/callback` as the Mac. Apple, Google and email all run on the site, so
+  the shared App ID `fr.yodev.pressay` gets no new capability and needs no URL type. Tokens stay in
+  the Keychain, `ThisDeviceOnly`.
+- **Device slots:** the iPhone is one of the account's three devices. A fourth device keeps its
+  session and is offered the device list; a removed iPhone is offered to restore itself, because the
+  cloud refuses it until then. The device identifier survives sign-outs and reinstalls.
+- **Pro rights:** a JWT signed with Ed25519 is verified against a key compiled into the app: issuer,
+  audience, account, device, expiry. It works offline until it expires (72 hours at most for Pro),
+  exactly as on the Mac, then the app is Free until the next refresh. Dictation never depends on it.
+- **Purchases:** StoreKit 2 with the existing Mac products and `appAccountToken` set to the account.
+  The JWS goes to the cloud, and a transaction is finished only once the cloud recorded it. Prices
+  and the trial always come from StoreKit. No link leads to a purchase outside the App Store.
+- **Limits:** `ProLimits`, from section 6 of the launch plan. Words already in the dictionary and
+  older history survive a lapsed subscription.
+- **AI modes:** Foundation Models, on the device, in `App/AI`. `ModeRunner` delivers the dictated
+  text whenever the model is missing, slow, refusing or rate limited, and when trials are used up.
+- **Dictionary and sync:** `DictionaryApplier` runs after every engine. `SyncService` speaks the
+  Mac's end-to-end encrypted format (`SyncCrypto`, pinned by vectors generated from the Mac's Rust
+  code). Audio, history and dictated text are never synced.
+
+### Try it without a real account
+
+`scripts/fake-cloud.mjs` plays the cloud and the issuer in memory, with a throwaway key, and prints
+the arguments debug builds accept. Release builds only know production.
+
+```bash
+node scripts/fake-cloud.mjs 8787
+xcrun simctl launch <simulator> fr.yodev.pressay -PressayCloudURL http://127.0.0.1:8787 \
+  -PressayEntitlementKey <printed key> -PressayEntitlementKeyID fake-key -PressayRewriter rateLimited
+```
+
+`-PressayRewriter echo|rateLimited|unavailable` replaces the model in debug builds, and
+`-PressayFakeStore 1|foreign` replaces StoreKit (`foreign`: a purchase held outside this account).
+
+### StoreKit locally
+
+`StoreKit/Pressay.storekit` holds the test products. It applies when the app runs from Xcode (the
+scheme points to it), not with `simctl launch`. `StoreTests/` uses `SKTestSession` and
+skips without the fake cloud's environment; `SKTestSession` under `xcodebuild` is broken by an Apple
+bug on iOS 26.3 and later simulators (FB22237318), so run those tests on a 26.2 runtime or from
+Xcode.
 
 ## Develop
 

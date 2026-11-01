@@ -32,7 +32,8 @@ jobs:
       - name: Build for the simulator
         run: |
           xcodegen generate
-          xcodebuild build \
+          # Also compiles StoreTests, which need a simulator and a local server to run.
+          xcodebuild build-for-testing \
             -project Pressay.xcodeproj \
             -scheme Pressay \
             -destination 'generic/platform=iOS Simulator' \
