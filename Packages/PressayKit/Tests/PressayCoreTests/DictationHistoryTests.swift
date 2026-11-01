@@ -28,12 +28,12 @@ import Testing
 
     @Test func keepsAtMostCapacityEntries() throws {
         let now = Date()
-        for index in 0..<(DictationHistory.capacity + 5) {
-            try history.add(entry("\(index)", at: now.addingTimeInterval(Double(index))))
+        for index in 0..<8 {
+            try history.add(entry("\(index)", at: now.addingTimeInterval(Double(index))), capacity: 3)
         }
         let entries = try history.entries()
-        #expect(entries.count == DictationHistory.capacity)
-        #expect(entries.first?.text == "\(DictationHistory.capacity + 4)")
+        #expect(entries.count == 3)
+        #expect(entries.first?.text == "7")
     }
 
     @Test func keepsTheRecoveredFlagAndConvertsToAResult() throws {
@@ -94,5 +94,40 @@ import Testing
         #expect(entries.matching("REUNION").map(\.text) == ["Réunion lundi"])
         #expect(entries.matching("  ").count == 3)
         #expect(entries.matching("demain").isEmpty)
+    }
+
+    @Test func freeKeepsAWideHistoryAndProKeepsEverything() throws {
+        for index in 0..<3 {
+            try history.add(entry("\(index)", at: Date(timeIntervalSince1970: TimeInterval(index))), capacity: 2)
+        }
+        #expect(try history.entries().map(\.text) == ["2", "1"])
+        try history.add(entry("3", at: Date(timeIntervalSince1970: 3)), capacity: nil)
+        try history.add(entry("4", at: Date(timeIntervalSince1970: 4)), capacity: nil)
+        #expect(try history.entries().count == 4)
+    }
+
+    @Test func freeSeesTheLastDaysAndNothingIsLost() {
+        let now = Date(timeIntervalSince1970: 1_800_000_000)
+        let entries = [
+            entry("recent", at: now.addingTimeInterval(-6 * 86_400)),
+            entry("old", at: now.addingTimeInterval(-8 * 86_400)),
+        ]
+        #expect(entries.visibleEntries(isPro: false, freeDays: 7, now: now).map(\.text) == ["recent"])
+        #expect(entries.visibleEntries(isPro: true, freeDays: 7, now: now).count == 2)
+    }
+
+    @Test func aRewrittenEntryKeepsItsOriginalAndOlderFilesStillDecode() throws {
+        let rewritten = HistoryEntry(
+            text: "Bonjour", engine: .fast, audioSeconds: 1, transcriptionSeconds: 0.1, originalText: "bonjour euh", modeID: "email"
+        )
+        try history.add(rewritten)
+        #expect(try history.entries().first?.originalText == "bonjour euh")
+        let older = """
+        {"id":"\(UUID().uuidString)","text":"t","engine":"fast","createdAt":"2026-10-01T10:00:00Z",\
+        "audioSeconds":1,"transcriptionSeconds":1,"recovered":false}
+        """
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        #expect(try decoder.decode(HistoryEntry.self, from: Data(older.utf8)).modeID == nil)
     }
 }
