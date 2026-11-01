@@ -30,7 +30,11 @@ struct DictionaryView: View {
                 }
             } footer: {
                 if account.isPro {
+                    #if PRESSAY_SYNC
+                    Text("dictionary.footer.pro.sync")
+                    #else
                     Text("dictionary.footer.pro")
+                    #endif
                 } else {
                     Text(String(
                         format: String(localized: "dictionary.footer.free"),

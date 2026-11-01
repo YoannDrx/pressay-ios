@@ -20,7 +20,7 @@ public struct CloudClient: Sendable {
         self.transport = transport
     }
 
-    func url(_ path: String, query: [URLQueryItem] = []) throws -> URL {
+    package func url(_ path: String, query: [URLQueryItem] = []) throws -> URL {
         guard var components = URLComponents(url: configuration.apiBaseURL, resolvingAgainstBaseURL: false) else {
             throw CloudFailure("cloud_api_url_invalid")
         }
@@ -30,7 +30,7 @@ public struct CloudClient: Sendable {
         return url
     }
 
-    func request(_ method: String, _ url: URL, bearer: String? = nil, headers: [String: String] = [:]) -> URLRequest {
+    package func request(_ method: String, _ url: URL, bearer: String? = nil, headers: [String: String] = [:]) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = method
         request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -43,7 +43,7 @@ public struct CloudClient: Sendable {
         return request
     }
 
-    func json<Body: Encodable>(
+    package func json<Body: Encodable>(
         _ method: String, _ url: URL, body: Body, bearer: String?, headers: [String: String] = [:]
     ) throws -> URLRequest {
         var request = request(method, url, bearer: bearer, headers: headers)
@@ -52,7 +52,7 @@ public struct CloudClient: Sendable {
         return request
     }
 
-    func form(_ url: URL, _ fields: [(String, String)]) -> URLRequest {
+    package func form(_ url: URL, _ fields: [(String, String)]) -> URLRequest {
         var request = request("POST", url)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         var allowed = CharacterSet.alphanumerics
@@ -66,7 +66,7 @@ public struct CloudClient: Sendable {
 
     /// Sends a request and returns its body, or throws the server's stable error code.
     @discardableResult
-    func send(_ request: URLRequest) async throws -> Data {
+    package func send(_ request: URLRequest) async throws -> Data {
         let data: Data
         let response: HTTPURLResponse
         do {
@@ -87,7 +87,7 @@ public struct CloudClient: Sendable {
         return data
     }
 
-    func decode<Response: Decodable>(_ type: Response.Type, _ request: URLRequest) async throws -> Response {
+    package func decode<Response: Decodable>(_ type: Response.Type, _ request: URLRequest) async throws -> Response {
         let data = try await send(request)
         do {
             return try JSONDecoder().decode(type, from: data)

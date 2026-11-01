@@ -58,13 +58,18 @@ private struct ProHero: View {
 
 /// Only what ships in this version: a feature that is not here does not get sold.
 private struct ProFeatureList: View {
-    private let features: [(LocalizedStringKey, String)] = [
-        ("pro.feature.modes", "wand.and.sparkles"),
-        ("pro.feature.history", "clock.arrow.circlepath"),
-        ("pro.feature.dictionary", "character.book.closed"),
-        ("pro.feature.sync", "lock.icloud"),
-        ("pro.feature.devices", "laptopcomputer.and.iphone"),
-    ]
+    private var features: [(LocalizedStringKey, String)] {
+        var features: [(LocalizedStringKey, String)] = [
+            ("pro.feature.modes", "wand.and.sparkles"),
+            ("pro.feature.history", "clock.arrow.circlepath"),
+            ("pro.feature.dictionary", "character.book.closed"),
+        ]
+        #if PRESSAY_SYNC
+        features.append(("pro.feature.sync", "lock.icloud"))
+        #endif
+        features.append(("pro.feature.devices", "laptopcomputer.and.iphone"))
+        return features
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {

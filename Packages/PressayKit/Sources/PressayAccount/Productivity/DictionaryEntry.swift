@@ -67,7 +67,7 @@ public struct DictionaryEntry: Codable, Equatable, Sendable, Identifiable {
             && variants.allSatisfy { Self.isValidText($0, maximum: 200) }
     }
 
-    static func isValidID(_ value: String) -> Bool {
+    package static func isValidID(_ value: String) -> Bool {
         (1...64).contains(value.count)
             && value.allSatisfy { $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") }
     }

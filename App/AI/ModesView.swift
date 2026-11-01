@@ -8,7 +8,9 @@ struct ModesView: View {
     @Environment(ProductivityModel.self) private var productivity
     @State private var showsPro = false
 
+    #if PRESSAY_SYNC
     private var customModes: [PressayMode] { productivity.document.modes.filter { !$0.isBuiltin } }
+    #endif
 
     var body: some View {
         List {
@@ -34,6 +36,7 @@ struct ModesView: View {
                     ModeRow(name: Text(LocalizedStringKey(nameKey)), detail: Text(LocalizedStringKey(detailKey)), id: mode.id)
                 }
             }
+            #if PRESSAY_SYNC
             if !customModes.isEmpty {
                 Section("modes.custom") {
                     ForEach(customModes) { mode in
@@ -45,6 +48,7 @@ struct ModesView: View {
                     }
                 }
             }
+            #endif
         }
         .navigationTitle("modes.title")
         .navigationBarTitleDisplayMode(.inline)

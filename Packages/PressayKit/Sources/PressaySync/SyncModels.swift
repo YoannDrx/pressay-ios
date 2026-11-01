@@ -1,5 +1,6 @@
 import CryptoKit
 import Foundation
+import PressayAccount
 
 public enum SyncObjectType: String, Codable, Sendable {
     case mode, profile, dictionary, preference

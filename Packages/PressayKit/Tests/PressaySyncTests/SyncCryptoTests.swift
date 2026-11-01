@@ -1,7 +1,8 @@
 // swiftlint:disable line_length
 import Foundation
 import Testing
-@testable import PressayAccount
+import PressayAccount
+@testable import PressaySync
 
 private func hex(_ value: String) -> Data {
     var data = Data()

@@ -4,7 +4,10 @@ import SwiftUI
 /// The sentence for a failure code. Everything unknown reads the same, without inventing a cause.
 enum AccountMessages {
     static func message(for failure: CloudFailure) -> LocalizedStringKey {
-        messages[failure.code] ?? "account.error.generic"
+        #if PRESSAY_SYNC
+        if let message = syncMessages[failure.code] { return message }
+        #endif
+        return messages[failure.code] ?? "account.error.generic"
     }
 
     private static var messages: [String: LocalizedStringKey] {
@@ -27,9 +30,6 @@ enum AccountMessages {
             "apple_customer_conflict": "pro.error.otherAppleAccount",
             "storekit_unverified": "pro.error.unverified",
             "storekit_purchase_failed": "pro.error.purchase",
-            "cloud_sync_recovery_code_invalid": "sync.error.recoveryCode",
-            "sync_recovery_rejected": "sync.error.recoveryCode",
-            "sync_device_not_approved": "sync.error.notApproved",
         ]
     }
 }

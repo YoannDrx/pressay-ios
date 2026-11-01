@@ -188,10 +188,13 @@ final class AccountModel {
         isWorking = true
         defer { isWorking = false }
         do {
-            let deleted = try await service.deleteAccount(acknowledgingAppleSubscription: acknowledging)
-            if let deleted {
+            #if PRESSAY_SYNC
+            if let deleted = try await service.deleteAccount(acknowledgingAppleSubscription: acknowledging) {
                 await AccountEnvironment.sync.forget(accountID: deleted)
             }
+            #else
+            try await service.deleteAccount(acknowledgingAppleSubscription: acknowledging)
+            #endif
             snapshot = await service.cachedSnapshot()
             devices = []
             billing = nil

@@ -1,5 +1,6 @@
 import CryptoKit
 import Foundation
+import PressayAccount
 
 /// A new recovery code (shown once), its hash and the account key sealed under it.
 public struct RecoveryEnvelope: Sendable {

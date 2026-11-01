@@ -39,6 +39,9 @@ jobs:
             -authenticationKeyID "$ASC_KEY_ID" \
             -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
             -quiet
+      # The upload declares no encryption outside the OS: the archive must hold none.
+      - name: Check the archive
+        run: scripts/check-no-sync.sh "$RUNNER_TEMP/Pressay.xcarchive/Products/Applications/Pressay.app"
       - name: Upload
         env:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}

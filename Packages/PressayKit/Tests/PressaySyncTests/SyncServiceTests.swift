@@ -2,6 +2,7 @@
 import Foundation
 import Testing
 @testable import PressayAccount
+@testable import PressaySync
 
 /// A sync server in memory, with a second device standing in for the Mac.
 final class FakeSyncServer: @unchecked Sendable {

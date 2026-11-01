@@ -2,7 +2,7 @@ import Foundation
 
 extension Data {
     /// Base64url without padding (RFC 7515). Rejects anything else, as the Mac's decoder does.
-    init?(base64URL value: String) {
+    package init?(base64URL value: String) {
         guard value.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") }) else {
             return nil
         }
@@ -16,7 +16,7 @@ extension Data {
         self.init(base64Encoded: base64)
     }
 
-    var base64URL: String {
+    package var base64URL: String {
         base64EncodedString()
             .replacingOccurrences(of: "+", with: "-")
             .replacingOccurrences(of: "/", with: "_")

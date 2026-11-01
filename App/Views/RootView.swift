@@ -33,7 +33,9 @@ struct RootView: View {
             Task {
                 await account.refreshIfDue()
                 await productivity.load()
+                #if PRESSAY_SYNC
                 await productivity.runSyncIfDue()
+                #endif
             }
         }
     }

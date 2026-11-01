@@ -1,6 +1,18 @@
+#if PRESSAY_SYNC
 import PressayAccount
+import PressaySync
 import SwiftUI
 import UIKit
+
+extension AccountMessages {
+    static var syncMessages: [String: LocalizedStringKey] {
+        [
+            "cloud_sync_recovery_code_invalid": "sync.error.recoveryCode",
+            "sync_recovery_rejected": "sync.error.recoveryCode",
+            "sync_device_not_approved": "sync.error.notApproved",
+        ]
+    }
+}
 
 /// Encrypted sync of the dictionary, modes and active mode with the Mac. Off until asked for.
 struct SyncView: View {
@@ -138,3 +150,4 @@ private struct RecoveryCodeSheet: View {
         }
     }
 }
+#endif

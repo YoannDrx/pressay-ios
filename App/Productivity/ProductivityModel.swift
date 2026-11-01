@@ -2,25 +2,28 @@ import Foundation
 import Observation
 import PressayAccount
 import PressayShared
+#if PRESSAY_SYNC
+import PressaySync
+#endif
 
-/// The dictionary and the active mode as the interface sees them. Edits go through the store, then
-/// a sync run if this iPhone has joined one.
+/// The dictionary and the active mode as the interface sees them. Edits go through the store.
 @MainActor
 @Observable
 final class ProductivityModel {
     static let shared = ProductivityModel()
 
-    private(set) var document = ProductivityDocument()
+    var document = ProductivityDocument()
     private(set) var trialsRemaining = ProLimits.freeAITrials
-    private(set) var syncSnapshot: SyncSnapshot?
-    private(set) var lastSync: SyncRunReport?
-    private(set) var isSyncing = false
+    #if PRESSAY_SYNC
+    var syncSnapshot: SyncSnapshot?
+    var lastSync: SyncRunReport?
+    var isSyncing = false
+    @ObservationIgnored let sync = AccountEnvironment.sync
+    @ObservationIgnored var lastSyncRun: Date?
+    @ObservationIgnored var pendingSync: Task<Void, Never>?
+    #endif
 
-    @ObservationIgnored private let store = AccountEnvironment.productivity
-    @ObservationIgnored private let sync = AccountEnvironment.sync
-    @ObservationIgnored private var lastSyncRun: Date?
-    @ObservationIgnored private var pendingSync: Task<Void, Never>?
-    private static let syncInterval: TimeInterval = 15 * 60
+    @ObservationIgnored let store = AccountEnvironment.productivity
 
     private init() {}
 
@@ -62,97 +65,12 @@ final class ProductivityModel {
             do {
                 try await store.modify(body)
                 document = await store.document()
+                #if PRESSAY_SYNC
                 scheduleSync()
+                #endif
             } catch {
                 PressayLog.shared.event("productivity.writeFailed", ["error": ErrorTag.of(error)])
             }
-        }
-    }
-
-    // MARK: Sync
-
-    /// Waits a moment after an edit, so several edits make one run.
-    private func scheduleSync() {
-        pendingSync?.cancel()
-        pendingSync = Task {
-            try? await Task.sleep(for: .seconds(3))
-            guard !Task.isCancelled else { return }
-            await runSyncIfReady()
-        }
-    }
-
-    func runSyncIfDue() async {
-        if let lastSyncRun, Date().timeIntervalSince(lastSyncRun) < Self.syncInterval { return }
-        await runSyncIfReady()
-    }
-
-    /// Only a Pro iPhone that already holds the key syncs: nothing is ever sent otherwise.
-    private func runSyncIfReady() async {
-        guard AccountModel.shared.isConnected, AccountModel.shared.isPro else { return }
-        do {
-            guard try await sync.snapshot().status == .ready else { return }
-            try await runSync()
-        } catch {
-            PressayLog.shared.event("sync.failed", ["code": .tag((error as? CloudFailure)?.code ?? "unknown")])
-        }
-    }
-
-    private func runSync() async throws {
-        isSyncing = true
-        defer { isSyncing = false }
-        lastSyncRun = Date()
-        lastSync = try await sync.run()
-        document = await store.document()
-    }
-
-    func syncNow() async {
-        do {
-            try await runSync()
-        } catch {
-            AccountModel.shared.report(error)
-        }
-    }
-
-    func loadSync() async {
-        do {
-            syncSnapshot = try await sync.snapshot()
-        } catch {
-            AccountModel.shared.report(error)
-        }
-    }
-
-    func enableSync() async {
-        do {
-            syncSnapshot = try await sync.enable()
-            if syncSnapshot?.status == .ready { await syncNow() }
-        } catch {
-            AccountModel.shared.report(error)
-        }
-    }
-
-    func approve(_ device: SyncDevice) async {
-        do {
-            syncSnapshot = try await sync.approve(deviceID: device.id)
-        } catch {
-            AccountModel.shared.report(error)
-        }
-    }
-
-    func recover(code: String) async {
-        do {
-            syncSnapshot = try await sync.recover(code: code)
-            await syncNow()
-        } catch {
-            AccountModel.shared.report(error)
-        }
-    }
-
-    func createRecoveryCode() async -> String? {
-        do {
-            return try await sync.createRecoveryCode()
-        } catch {
-            AccountModel.shared.report(error)
-            return nil
         }
     }
 }

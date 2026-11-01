@@ -1,6 +1,9 @@
 import Foundation
 import PressayAccount
 import PressayShared
+#if PRESSAY_SYNC
+import PressaySync
+#endif
 
 /// The account layer's singletons. Nothing here reaches the network until the user signs in, and
 /// the keyboard links none of it.
@@ -30,6 +33,7 @@ enum AccountEnvironment {
 
     static let productivity = ProductivityStore.applicationSupport(secrets: secrets)
 
+    #if PRESSAY_SYNC
     static let sync = SyncService(
         account: account,
         secrets: secrets,
@@ -37,6 +41,7 @@ enum AccountEnvironment {
         stateStore: FileSyncStateStore.applicationSupport,
         log: PressayLog.shared
     )
+    #endif
 
     static let trials = AITrialCounter(secrets: secrets)
 

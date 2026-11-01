@@ -38,7 +38,8 @@ targets:
         product: PressayShared
       - package: PressayKit
         product: PressayCore
-      # Account, Pro rights, sync, dictionary and AI modes: never linked by an extension.
+      # Account, Pro rights, dictionary and AI modes: never linked by an extension.
+      # PressaySync is left out on purpose: see project.sync.yml and the README.
       - package: PressayKit
         product: PressayAccount
       - package: FluidAudio

@@ -46,6 +46,14 @@ import Testing
         #expect(body["deviceIdentifier"]?.hasPrefix("pressay-device:") == true)
     }
 
+    /// Encrypted sync is not linked in shipped builds: connecting must never depend on it.
+    @Test func connectingEnrollsNoSyncKey() async throws {
+        let (_, snapshot) = try await signedIn()
+        #expect(snapshot.connection == .connected)
+        #expect(!cloud.transport.paths().contains { $0.contains("/v1/sync") })
+        #expect(!secrets.keys.contains { $0.contains("sync") })
+    }
+
     @Test func aForgedOrDeniedCallbackIsRefused() async throws {
         let service = try cloud.service(secrets: secrets)
         let request = try await service.beginSignIn(provider: nil)

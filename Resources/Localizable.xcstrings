@@ -126,13 +126,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This cannot be undone. Your account, its devices and your encrypted sync data will be deleted."
+            "value" : "This cannot be undone. Your account, its devices and what Pressay Cloud keeps for it will be deleted."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "C’est définitif. Votre compte, ses appareils et vos données de synchro chiffrées seront supprimés."
+            "value" : "C’est définitif. Votre compte, ses appareils et ce que Pressay Cloud conserve pour lui seront supprimés."
           }
         }
       }
@@ -177,13 +177,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deletes your account, its devices and your encrypted sync data. Your dictations stay on this iPhone, and the app keeps working without an account."
+            "value" : "Deletes your account and its devices from Pressay Cloud. Your dictations stay on this iPhone, and the app keeps working without an account."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Supprime votre compte, ses appareils et vos données de synchro chiffrées. Vos dictées restent sur cet iPhone et l’app continue de fonctionner sans compte."
+            "value" : "Supprime votre compte et ses appareils de Pressay Cloud. Vos dictées restent sur cet iPhone et l’app continue de fonctionner sans compte."
           }
         }
       }
@@ -942,13 +942,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your dictionary stays encrypted, and syncs with your Mac if you turn on sync."
+            "value" : "Your dictionary stays encrypted on this iPhone."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Votre dictionnaire reste chiffré, et se synchronise avec votre Mac si vous activez la synchro."
+            "value" : "Votre dictionnaire reste chiffré sur cet iPhone."
           }
         }
       }
@@ -3180,23 +3180,6 @@
         }
       }
     },
-    "modes.custom" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "From your Mac"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Depuis votre Mac"
-          }
-        }
-      }
-    },
     "modes.footer" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3584,23 +3567,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modes IA illimités, sur votre iPhone : e-mail, note, résumé, traduction"
-          }
-        }
-      }
-    },
-    "pro.feature.sync" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "End-to-end encrypted sync with your Mac"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synchro chiffrée de bout en bout avec votre Mac"
           }
         }
       }
@@ -5573,363 +5539,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dicter"
-          }
-        }
-      }
-    },
-    "sync.approve" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Approve"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Approuver"
-          }
-        }
-      }
-    },
-    "sync.conflicts" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Some items changed on two devices. Both versions were kept."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Certains éléments ont changé sur deux appareils : les deux versions ont été conservées."
-          }
-        }
-      }
-    },
-    "sync.enable" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Turn on sync"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Activer la synchro"
-          }
-        }
-      }
-    },
-    "sync.enable.footer" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "If another device already syncs, it will have to approve this iPhone, or you can use your recovery code."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Si un autre appareil synchronise déjà, il devra approuver cet iPhone. Vous pouvez aussi utiliser votre code de récupération."
-          }
-        }
-      }
-    },
-    "sync.error.notApproved" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This device is not approved for sync yet, or your account does not include Pro."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cet appareil n’est pas encore approuvé pour la synchro, ou votre compte n’inclut pas Pro."
-          }
-        }
-      }
-    },
-    "sync.error.recoveryCode" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This recovery code is not valid."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ce code de récupération n’est pas valide."
-          }
-        }
-      }
-    },
-    "sync.explanation" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your dictionary, modes and active mode stay the same on your Mac and your iPhone. They are encrypted on your devices, so the server cannot read them. Audio, history and dictated text are never synced."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Votre dictionnaire, vos modes et votre mode actif restent les mêmes sur votre Mac et votre iPhone. Ils sont chiffrés sur vos appareils : le serveur ne peut pas les lire. La voix, l’historique et les textes dictés ne sont jamais synchronisés."
-          }
-        }
-      }
-    },
-    "sync.now" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sync now"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synchroniser maintenant"
-          }
-        }
-      }
-    },
-    "sync.pending" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Waiting for approval: open Pressay on a device that already syncs and approve this iPhone."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En attente d’approbation : ouvrez Pressay sur un appareil qui synchronise déjà et approuvez cet iPhone."
-          }
-        }
-      }
-    },
-    "sync.pendingDevices" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Waiting for approval"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En attente d’approbation"
-          }
-        }
-      }
-    },
-    "sync.ready" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sync is on"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La synchro est activée"
-          }
-        }
-      }
-    },
-    "sync.recovery.create" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Create a recovery code"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Créer un code de récupération"
-          }
-        }
-      }
-    },
-    "sync.recovery.create.footer" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "It lets a new device join sync without an approved device nearby. A new code replaces the previous one."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Il permet à un nouvel appareil de rejoindre la synchro sans appareil approuvé à portée. Un nouveau code remplace le précédent."
-          }
-        }
-      }
-    },
-    "sync.recovery.footer" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The code you created on an approved device. It is checked on this iPhone."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Le code créé sur un appareil approuvé. Il est vérifié sur cet iPhone."
-          }
-        }
-      }
-    },
-    "sync.recovery.placeholder" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PRS1…"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PRS1…"
-          }
-        }
-      }
-    },
-    "sync.recovery.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recovery code"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Code de récupération"
-          }
-        }
-      }
-    },
-    "sync.recovery.use" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Use this code"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Utiliser ce code"
-          }
-        }
-      }
-    },
-    "sync.recovery.warning" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This code is shown only once. Keep it somewhere safe: anyone who has it can read your synced data. If you copy it, remove it from the clipboard afterwards."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ce code n’est affiché qu’une fois. Conservez-le en lieu sûr : quiconque le détient peut lire vos données synchronisées. Si vous le copiez, retirez-le ensuite du presse-papiers."
-          }
-        }
-      }
-    },
-    "sync.report" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Last sync: %1$lld sent, %2$lld received."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dernière synchro : %1$lld envoyés, %2$lld reçus."
-          }
-        }
-      }
-    },
-    "sync.requiresPro" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Encrypted sync comes with Pressay Pro."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La synchro chiffrée est incluse dans Pressay Pro."
-          }
-        }
-      }
-    },
-    "sync.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Encrypted sync"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synchro chiffrée"
           }
         }
       }

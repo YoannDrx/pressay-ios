@@ -1,4 +1,5 @@
 import Foundation
+import PressayAccount
 import PressayShared
 
 /// End-to-end encrypted sync of the dictionary, modes and the active mode, compatible with the

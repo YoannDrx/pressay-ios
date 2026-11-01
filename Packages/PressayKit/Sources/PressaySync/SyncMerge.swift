@@ -1,4 +1,5 @@
 import Foundation
+import PressayAccount
 
 /// The Mac's merge rules (`cloud_sync.rs`), free of any network: what to upload, and how to apply
 /// what arrives. A conflict never loses work: the other side's version is kept next to this one.

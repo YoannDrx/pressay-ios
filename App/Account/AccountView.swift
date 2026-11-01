@@ -2,7 +2,7 @@ import PressayAccount
 import StoreKit
 import SwiftUI
 
-/// The optional account: sign-in, the three device slots, encrypted sync, sign-out and deletion.
+/// The optional account: sign-in, the three device slots, sign-out and deletion.
 struct AccountView: View {
     @Environment(AccountModel.self) private var account
 
@@ -217,6 +217,7 @@ private struct ConnectedSections: View {
             Text("account.devices.footer")
         }
 
+        #if PRESSAY_SYNC
         Section {
             NavigationLink {
                 SyncView()
@@ -225,6 +226,7 @@ private struct ConnectedSections: View {
             }
             .accessibilityIdentifier("syncSettings")
         }
+        #endif
 
         Section {
             Button("account.signOut") { Task { await account.signOut() } }

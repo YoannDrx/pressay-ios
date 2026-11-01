@@ -71,17 +71,17 @@ public enum JSONValue: Codable, Equatable, Sendable {
     }
 
     /// Stable bytes for hashing: sorted keys.
-    func canonicalData() throws -> Data {
+    package func canonicalData() throws -> Data {
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.sortedKeys]
         return try encoder.encode(self)
     }
 
-    init(encoding value: some Encodable) throws {
+    package init(encoding value: some Encodable) throws {
         self = try JSONDecoder().decode(JSONValue.self, from: JSONEncoder().encode(value))
     }
 
-    func decoded<Value: Decodable>(as type: Value.Type) throws -> Value {
+    package func decoded<Value: Decodable>(as type: Value.Type) throws -> Value {
         try JSONDecoder().decode(type, from: JSONEncoder().encode(self))
     }
 }
